@@ -49,7 +49,7 @@ class server:
         print(address)
         new = threading.Thread(server.new_thread(c,address))
         new.start()
-        
+        return new
 while 1:
     try:
         S = server(1000,12345)
