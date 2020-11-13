@@ -16,6 +16,8 @@ class client:
                 # print(data)
         except socket.timeout:
             pass
+        self.data = data
 while 1:
     command = input("Client : ")
     client("localhost",12345,command)
+    print(client("localhost",12345,command).data)
