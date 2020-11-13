@@ -1,6 +1,6 @@
 from PAGE import *
 url = {
-    "page"   : oo,
+    "page"  : oo,
     "login" : avatar,
-    
+    "image" : HTTP_RESPONSE
 }

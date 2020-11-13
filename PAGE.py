@@ -1,5 +1,4 @@
-oo = """HTTP/1.1 200 OK\nDate: Tue, 18 Aug 2015 15:44:04 GMT\nServer: Apache/2.2.3 (CentOS)
-Content-Type: text/html\n
+oo = """
 <HMTL>
 <HEAD>
 <TITLE>webpage1</TITLE>
@@ -167,7 +166,7 @@ span.psw {
 </style>
 <form action="action_page.php" method="post">
   <div class="imgcontainer">
-    
+    <img src="image" style="width: 30%;height: auto;">
   </div>
 
   <div class="container">
@@ -189,3 +188,13 @@ span.psw {
   </div>
 </form>
 """
+with open("inspire0.png", "r+b") as image_file:
+  data = image_file.read()
+  HTTP_RESPONSE = b'\r\n'.join([
+      b"HTTP/1.1 200 OK",
+      b"Connection: close",
+      b"Content-Type: image/png",
+      bytes("Content-Length: %s" % len(data),'utf-8'),
+      b'', data 
+  ] )
+# print(HTTP_RESPONSE)

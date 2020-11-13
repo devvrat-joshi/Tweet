@@ -30,13 +30,15 @@ class server:
                     print(myurl)
                 if not data:
                     try:
-                        print("FROM HERE")
-                        c.send(bytes(url["page"],"utf-8"))
+                        c.send(bytes(url[myurl],"utf-8"))
                     except:
                         c.send(bytes(message,"utf-8"))     
         except socket.timeout:
             try:
-                c.send(bytes(url[myurl[1:]],"utf-8"))
+                if myurl[1:]=="image":
+                    c.send(url[myurl[1:]])
+                else:    
+                    c.send(bytes(url[myurl[1:]],"utf-8"))
                 print("Page Returned")
             except:
                 c.send(bytes(message,"utf-8"))
