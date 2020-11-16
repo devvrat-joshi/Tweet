@@ -1,7 +1,7 @@
 # id, user, time, likes
 
 import sqlite3
-conn = sqlite3.connect('tweets.db')
+conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 
 # c.execute("DROP TABLE tweets;")
@@ -13,6 +13,15 @@ c.execute("""
         body VARCHAR(300) NOT NULL,
         created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         );
+""")
+conn.commit()
+
+c.execute("""
+    CREATE TABLE IF NOT EXISTS tags (
+        id INTEGER PRIMARY KEY,
+        tag VARCHAR(80) NOT NULL,
+        tweet_id INTEGER NOT NULL
+    );
 """)
 
 conn.commit()

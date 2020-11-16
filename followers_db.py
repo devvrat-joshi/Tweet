@@ -1,7 +1,7 @@
 import sqlite3
-connf = sqlite3.connect('followers.db')
+connf = sqlite3.connect('minitweet.db')
 cf = connf.cursor()
-connu = sqlite3.connect('users.db')
+connu = sqlite3.connect('minitweet.db')
 cu = connu.cursor()
 
 
