@@ -1,4 +1,4 @@
-import db
+import users_db
 tokenCounter = 1
 logData = {}
 
@@ -43,3 +43,11 @@ def logout(data):
     else:
         logData.pop(sessionID)
         return "$Logged_out$"
+
+def search_user(data):
+    if len(data) != 3:
+        return "Invalid arguments"
+    usernameRegex, sessionID = data
+    if sessionID in logData:
+        return "Need to be logged in first"
+    if 

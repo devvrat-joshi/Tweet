@@ -11,23 +11,6 @@ c.execute("""
 
 conn.commit()
 
-
-
-# conn.commit()
-
-# all_users = c.execute("""
-#     SELECT *
-#     FROM users
-# """)
-# for i in all_users:
-#     print(i)
-
-# single user query with username and password
-# given_user = c.execute("""
-#     SELECT * FROM users
-#     WHERE username = "{}"
-# """.format("sachin"))
-
 def register_check(username):
     try:
         given_users = c.execute("""
@@ -63,5 +46,6 @@ def login(username,password):
         return False
     except:
         return False
+
 
 # conn.close()
