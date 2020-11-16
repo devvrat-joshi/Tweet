@@ -1,5 +1,5 @@
 import socket
-import sys
+import sys, os
 
 socket.setdefaulttimeout(3)
 class client:
@@ -25,6 +25,20 @@ sessionUser = 'guest'
 print(sessionID)
 while 1:
     command = input("{} : ".format(sessionUser))
+    if command == "tweet":
+        file = open("data/tweet{}.txt".format(sessionID),"w")
+        file.close()
+        os.system("nano data/tweet{}.txt".format(sessionID))
+        command = input("Are you sure to post the tweet Y/N : ")
+        if command[0] == 'y' or command[0] == 'Y':
+            tweet = open("data/tweet{}.txt".format(sessionID),"r")
+            s = tweet.read(200)
+            tweet.close()
+            recData = client("localhost",12345,"tweet " + s + " " + sessionID).data
+            print(recData)
+        else :
+            print("Post cancelled !")
+        continue
     recData = client("localhost",12345,command+" "+sessionID).data
     if recData.find("$Logged_out$")!=-1 :
         sessionUser = "guest"

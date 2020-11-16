@@ -5,7 +5,9 @@ c = conn.cursor()
 c.execute("""
     CREATE TABLE IF NOT EXISTS users (
         username VARCHAR(80) NOT NULL PRIMARY KEY UNIQUE,
-        password VARCHAR(80) NOT NULL 
+        password VARCHAR(80) NOT NULL, 
+        followers INT DEFAULT 0,
+        following INT DEFAULT 0
         );
 """)
 
@@ -28,7 +30,8 @@ def register(username, password):
         return False
     try:
         c.execute("""
-            INSERT INTO users VALUES ('{}', '{}');
+            INSERT INTO users (username, password)
+            VALUES ('{}', '{}');
         """.format(username,password))
         conn.commit()
         return True
@@ -46,6 +49,36 @@ def login(username,password):
         return False
     except:
         return False
+        
+def view_profile(username):
+    try:
+        given_users = c.execute("""
+            SELECT * FROM users
+            WHERE username = "{}"
+        """.format(username))
+        does_exist = False
+        curr_user = None
+        for user in given_users:
+            does_exist = True
+            curr_user = user
+        if not does_exist:
+            return "Given username does not exists"
+        return "{} :: Followers : {}, Following : {}".format(username,curr_user[2],curr_user[3]) 
+    except:
+        return "Invalid Username"
 
-
-# conn.close()
+def search(pattern):
+    try:
+        given_users = c.execute("""
+            SELECT username
+            FROM users
+            WHERE username LIKE "{}%"
+            LIMIT 5
+        """.format(pattern))
+        res = ""
+        for user in given_users:
+            res += " # "+ user[0] + "\n"
+        return "search results : \n" + res
+    except Exception:
+        print(Exception.with_traceback)
+        return "Invalid search"

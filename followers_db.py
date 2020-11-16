@@ -12,35 +12,80 @@ cf.execute("""
         );
 """)
 
+
+
 connf.commit()
 
 def add_follower(follower,followed):
     try:
+        if (followed == follower):
+            return "Cannot follow yourself"
         exist = cu.execute("""
-        select username
-        from users
-        where username="{}"
+            SELECT username
+            FROM users
+            WHERE username="{}"
         """.format(followed))#
-        #in am calling you , pick upt the call
+        does_exist = False
         for i in exist:
-            exist = True
-        else:
-            exist = False
-        if (not exist):
-            return ""
+            does_exist = True
+        if does_exist == False:
+            return "Invalid username"
         already = cf.execute("""
-        select *
-        from followers
-        where follower="{}" and followed="{}"
+            SELECT *
+            FROM followers
+            WHERE follower="{}" and followed="{}"
         """.format(follower,followed))
         for i in already:
-            already = True
-        else:
-            already = False
-        if (already):
-            return ""        
+            return "Already following"
+        cf.execute("""
+            INSERT INTO followers VALUES ("{}","{}")
+        """.format(follower,followed))
+        cu.execute("""
+            UPDATE users
+            SET followers = followers + 1
+            WHERE username = "{}";
+        """.format(followed))
+        connu.commit()
+        cu.execute("""
+            UPDATE users
+            SET following = following + 1
+            WHERE username = "{}";
+        """.format(follower))
+        connu.commit()
+        return " successfully started following "+ followed
     except:
-        pass
+        return "Unable to follow"
 
-def remove_follower():
-    
+def remove_follower(follower,followed):
+    try:
+        already = cf.execute("""
+            SELECT *
+            FROM followers
+            WHERE follower="{}" and followed="{}"
+        """.format(follower,followed))
+        does_follow = False
+        for i in already:
+            does_follow = True
+        if does_follow != True:
+            return "Unable to unfollow"
+        # DELETE ROW
+        cf.execute("""
+            DELETE FROM followers
+            WHERE follower="{}" and followed="{}"
+        """.format(follower,followed))
+        connf.commit()
+        cu.execute("""
+            UPDATE users
+            SET followers = followers - 1
+            WHERE username = "{}";
+        """.format(followed))
+        connu.commit()
+        cu.execute("""
+            UPDATE users
+            SET following = following - 1
+            WHERE username = "{}";
+        """.format(follower))
+        connu.commit()
+        return "Successfully Unfollowed "+ followed
+    except:
+        return "Unable to unfollow"
