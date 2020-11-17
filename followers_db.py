@@ -1,26 +1,22 @@
 import sqlite3
-connf = sqlite3.connect('minitweet.db')
-cf = connf.cursor()
-connu = sqlite3.connect('minitweet.db')
-cu = connu.cursor()
+conn = sqlite3.connect('minitweet.db')
+c = conn.cursor()
 
 
-cf.execute("""
+c.execute("""
     CREATE TABLE IF NOT EXISTS followers (
         follower VARCHAR(80) NOT NULL,
         followed VARCHAR(80) NOT NULL
         );
 """)
 
-
-
-connf.commit()
+conn.commit()
 
 def add_follower(follower,followed):
     try:
         if (followed == follower):
             return "Cannot follow yourself"
-        exist = cu.execute("""
+        exist = c.execute("""
             SELECT username
             FROM users
             WHERE username="{}"
@@ -30,35 +26,35 @@ def add_follower(follower,followed):
             does_exist = True
         if does_exist == False:
             return "Invalid username"
-        already = cf.execute("""
+        already = c.execute("""
             SELECT *
             FROM followers
             WHERE follower="{}" and followed="{}"
         """.format(follower,followed))
         for i in already:
             return "Already following"
-        cf.execute("""
+        c.execute("""
             INSERT INTO followers VALUES ("{}","{}")
         """.format(follower,followed))
-        cu.execute("""
+        c.execute("""
             UPDATE users
             SET followers = followers + 1
             WHERE username = "{}";
         """.format(followed))
-        connu.commit()
-        cu.execute("""
+        conn.commit()
+        c.execute("""
             UPDATE users
             SET following = following + 1
             WHERE username = "{}";
         """.format(follower))
-        connu.commit()
+        conn.commit()
         return " successfully started following "+ followed
     except:
         return "Unable to follow"
 
 def remove_follower(follower,followed):
     try:
-        already = cf.execute("""
+        already = c.execute("""
             SELECT *
             FROM followers
             WHERE follower="{}" and followed="{}"
@@ -69,23 +65,26 @@ def remove_follower(follower,followed):
         if does_follow != True:
             return "Unable to unfollow"
         # DELETE ROW
-        cf.execute("""
+        c.execute("""
             DELETE FROM followers
             WHERE follower="{}" and followed="{}"
         """.format(follower,followed))
-        connf.commit()
-        cu.execute("""
+        conn.commit()
+        c.execute("""
             UPDATE users
             SET followers = followers - 1
             WHERE username = "{}";
         """.format(followed))
-        connu.commit()
-        cu.execute("""
+        conn.commit()
+        c.execute("""
             UPDATE users
             SET following = following - 1
             WHERE username = "{}";
         """.format(follower))
-        connu.commit()
+        conn.commit()
         return "Successfully Unfollowed "+ followed
     except:
         return "Unable to unfollow"
+
+def fetch_online(username):
+    pass

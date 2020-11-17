@@ -7,7 +7,8 @@ c.execute("""
         username VARCHAR(80) NOT NULL PRIMARY KEY UNIQUE,
         password VARCHAR(80) NOT NULL, 
         followers INT DEFAULT 0,
-        following INT DEFAULT 0
+        following INT DEFAULT 0,
+        is_online BOOL DEFAULT 1
         );
 """)
 
@@ -45,8 +46,26 @@ def login(username,password):
         WHERE username = "{}" AND password = "{}"
         """.format(username,password))
         for user in given_users:
+            c.execute("""
+                UPDATE users
+                SET is_online = 1
+                WHERE username = '{}'
+            """.format(username))
+            conn.commit()
             return True
         return False
+    except:
+        return False
+
+def logout(username):
+    try:
+        c.execute("""
+                UPDATE users
+                SET is_online = 0
+                WHERE username = '{}'
+            """.format(username))
+        conn.commit()
+        return True
     except:
         return False
         

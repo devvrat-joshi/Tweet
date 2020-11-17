@@ -1,5 +1,6 @@
 import socket
 import sys, os
+import atexit
 
 socket.setdefaulttimeout(3)
 class client:
@@ -23,6 +24,10 @@ class client:
 sessionID = client("localhost",12345,"init").data
 sessionUser = 'guest'
 print(sessionID)
+def logout_exit():
+    client("", 12345, "logout")
+
+atexit.register(logout_exit)
 while 1:
     command = input("{} : ".format(sessionUser))
     if command == "tweet":

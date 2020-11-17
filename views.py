@@ -39,10 +39,13 @@ def logout(data):
         return "Invalid arguments"
     sessionID = data[0]
     if sessionID not in logData:
-        return ""
+        return "Need to be logged in first."
     else:
-        logData.pop(sessionID)
-        return "$Logged_out$"
+        if users_db.logout(logData[sessionID]):
+            logData.pop(sessionID)
+            return "$Logged_out$"
+        else:
+            return "Cannot logout"
 
 def add_follower(data):
     if len(data) != 2:
