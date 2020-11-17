@@ -34,12 +34,12 @@ while 1:
             tweet = open("data/tweet{}.txt".format(sessionID),"r")
             s = tweet.read(200)
             tweet.close()
-            recData = client("localhost",12345,"tweet " + s + " " + sessionID).data
+            recData = client("",12345,"tweet " + s + " " + sessionID).data
             print(recData)
         else :
             print("Post cancelled !")
         continue
-    recData = client("localhost",12345,command+" "+sessionID).data
+    recData = client("",12345,command+" "+sessionID).data
     if recData.find("$Logged_out$")!=-1 :
         sessionUser = "guest"
         print("Logged Out Successfully !!!")

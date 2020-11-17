@@ -11,6 +11,8 @@ from urls import functions
 class server:
     def __init__(self,connections,port):
         self.sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,True)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT,True)
         self.sock.bind(("localhost",port))
         self.sock.listen(connections)
         self.threads = []

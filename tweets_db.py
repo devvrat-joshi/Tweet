@@ -43,6 +43,7 @@ def post_tweet(username,body):
             VALUES ('{}', '{}')
         """.format(username,body))
         conn.commit()
+        print(posted_tweet)
         return "Successfully posted"
     except:
         return "Tweet cannot be posted. Try again later."
