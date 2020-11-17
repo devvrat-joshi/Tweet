@@ -81,5 +81,8 @@ def post_tweet(data):
     if sessionID not in logData:
         return "Need to login first."
     len_d = len(data)                
-    username, body = logData[sessionID], " ".join(data[1: len_d - 1])
+    username, body = logData[sessionID], " ".join(data[: -1])
     return tweets_db.post_tweet(username,body)
+
+def fetch_trending(data):
+    return tweets_db.fetch_trending()

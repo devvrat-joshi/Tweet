@@ -63,7 +63,9 @@ def view_profile(username):
             curr_user = user
         if not does_exist:
             return "Given username does not exists"
-        return "{} :: Followers : {}, Following : {}".format(username,curr_user[2],curr_user[3]) 
+        res = "{} :: Followers : {}, Following : {}".format(username,curr_user[2],curr_user[3]) 
+        
+        return res
     except:
         return "Invalid Username"
 
