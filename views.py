@@ -1,6 +1,8 @@
 import users_db,followers_db,tweets_db
+import socket
 tokenCounter = 1
 logData = {}
+toSessionID = {}
 
 def init(data):
     global tokenCounter
@@ -8,15 +10,14 @@ def init(data):
     return str(tokenCounter)
 
 def login(data):
-    print(len(data),data)
     if len(data) != 3:
         return "Invalid arguments"
     username, password,sessionID = data
-    print(username,password,sessionID)
     if sessionID in logData:
         return "Already logged in!"
     if users_db.login(username,password):
         logData[sessionID] = username
+        toSessionID[username] = sessionID
         return "Logged in Successfully!"
     return "Invalid Username/Password"
 
@@ -30,6 +31,7 @@ def register(data):
         return "Password doesn't match"
     elif users_db.register(username, password):
         logData[sessionID] = username
+        toSessionID[username] = sessionID
         return "Welcome to the mini-tweet team, " + username + " !!!"
     else:
         return "User already exists"
@@ -42,6 +44,7 @@ def logout(data):
         return "Need to be logged in first."
     else:
         if users_db.logout(logData[sessionID]):
+            toSessionID.pop(logData[sessionID])
             logData.pop(sessionID)
             return "$Logged_out$"
         else:
@@ -89,3 +92,29 @@ def post_tweet(data):
 
 def fetch_trending(data):
     return tweets_db.fetch_trending()
+
+def connect_chat(data):
+    if len(data) != 2:
+        return "Invalid arguments"
+    sendto, sessionID = data[0] ,data[1]
+    if sendto not in toSessionID:
+        return "the target is not online."
+    sendtoport = toSessionID[sendto]
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect(("localhost", int(sendtoport)+1024))
+    sock.send(bytes("{} is chatting".format(logData[sessionID]),"utf-8"))
+    sock.close()
+    return "Chat invitation sent."
+
+def send_msg(data):
+    if len(data) < 3:
+        return "Invalid arguments"
+    sendto, message, sessionID = data[0], " ".join(data[1:-1]) ,data[-1]
+    if sendto not in toSessionID:
+        return "the target is not online."
+    sendtoport = toSessionID[sendto]
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect(("localhost", int(sendtoport)+1024))
+    sock.send(bytes("{} :: {}".format(logData[sessionID],message),"utf-8"))
+    sock.close()
+    return "Message sent."

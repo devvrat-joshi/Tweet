@@ -9,5 +9,7 @@ functions = {
     "profile":views.view_profile,
     "search":views.search,
     "tweet":views.post_tweet,
-    "trending": views.fetch_trending
+    "trending": views.fetch_trending,
+    "chat": views.connect_chat,
+    "msg": views.send_msg
 }

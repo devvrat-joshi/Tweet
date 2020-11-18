@@ -1,6 +1,32 @@
 import socket
 import sys, os
 import atexit
+import multiprocessing
+manager = multiprocessing.Manager()
+shared = manager.dict()
+def server_chat(ip, port, shared):
+    print("I am running")
+    while 1:
+        try:
+            sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,True)
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT,True)
+            sock.bind(("localhost",port))
+            sock.listen(5)
+            c,addr = sock.accept()
+            print("I accepted", addr)
+            while 1:
+                data = c.recv(1024).decode()
+                print(data)
+                if data=="":
+                    break
+        except socket.timeout:
+            try:
+                sock.close()
+            except:
+                pass
+
+
 
 socket.setdefaulttimeout(3)
 class client:
@@ -20,13 +46,14 @@ class client:
             pass
         self.data = data
 
-    
+
 sessionID = client("localhost",12345,"init").data
 sessionUser = 'guest'
 print(sessionID)
 def logout_exit():
-    client("", 12345, "logout")
-
+    client("localhost", 12345, "logout")
+server_process = multiprocessing.Process(target=server_chat,args=("localhost",int(sessionID)+1024,shared))
+server_process.start()
 atexit.register(logout_exit)
 while 1:
     command = input("{} : ".format(sessionUser))
@@ -39,12 +66,12 @@ while 1:
             tweet = open("data/tweet{}.txt".format(sessionID),"r")
             s = tweet.read(200)
             tweet.close()
-            recData = client("",12345,"tweet " + s + " " + sessionID).data
+            recData = client("localhost",12345,"tweet " + s + " " + sessionID).data
             print(recData)
         else :
             print("Post cancelled !")
         continue
-    recData = client("",12345,command+" "+sessionID).data
+    recData = client("localhost",12345,command+" "+sessionID).data
     if recData.find("$Logged_out$")!=-1 :
         sessionUser = "guest"
         print("Logged Out Successfully !!!")
