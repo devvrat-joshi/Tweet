@@ -1,5 +1,4 @@
 # id, user, time, likes
-
 import sqlite3
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
@@ -37,6 +36,41 @@ def get_hastags(body):
             tags.append(word[1: ])
     return tags
 
+def does_user_exist(username):
+    try:
+        given_users = c.execute("""
+            SELECT * FROM users
+            WHERE username = "{}"
+        """.format(username))
+        for user in given_users:
+            return True
+        return False
+    except:
+        return False
+
+def post_mention_update(from_user, target_user, tweet_id):
+    body = from_user + " mentioned you in his tweet_id : " + str(tweet_id) + "."
+    try:
+        c.execute("""
+            INSERT INTO updates (username, body)
+            VALUES ('{}', '{}')
+        """.format(target_user, body))
+        conn.commit()
+    except:
+        pass
+
+def get_mentions(username, body, tweet_id):
+    body = body.split()
+    mentions = []
+    for word in body:
+        if (word[0] == '@'):
+            if does_user_exist(word[1:]):
+                mentions.append(word[1: ])
+    print("debug")
+    for mention in mentions:
+        post_mention_update(username,mention,tweet_id)
+    
+
 def post_tweet(username,body):
     try:
         if not body:
@@ -55,6 +89,7 @@ def post_tweet(username,body):
         for tag in hashtags:
             c.execute("INSERT INTO tags (tag, tweet_id) VALUES (?, ?)", (tag, tweet_id))
             conn.commit()
+        get_mentions(username, body, tweet_id)
         return "Successfully posted"
     except:
         return "Tweet cannot be posted. Try again later."

@@ -1,4 +1,4 @@
-import users_db,followers_db,tweets_db
+import users_db,followers_db,tweets_db, updates_db, groups_db
 import socket
 tokenCounter = 1
 logData = {}
@@ -118,3 +118,44 @@ def send_msg(data):
     sock.send(bytes("{} :: {}".format(logData[sessionID],message),"utf-8"))
     sock.close()
     return "Message sent."
+
+def fetch_updates(data):
+    if len(data) not in [1, 3]:
+        return "Invalid arguments"
+    sessionID = data[-1]
+    if sessionID not in logData:
+        return "Need to login first"
+    username = logData[sessionID]
+    print(data, len(data))
+    if len(data) == 3:
+        if data[0]=="mark" and data[1]=="read":
+            return updates_db.mark_read(username)
+    return updates_db.fetch_updates(username)
+
+def group_chat(data):
+    pass
+
+def group(data):
+    sessionID = data[-1]
+    if len(data) < 2:
+        return "Invalid arguments"
+    if sessionID not in logData: # put in server
+        return "Need to log in first"
+    if data[0] not in ["create","add","remove","members","delete"]:
+        return "Invalid command"
+    username = logData[sessionID]
+    groupname = data[1]
+    if data[0] == "create":
+        return groups_db.create_group(username,groupname)
+    elif data[0] == "add":
+        return groups_db.add_member(username,data[2:-1],groupname)
+    elif data[0]=="remove":
+        return groups_db.remove_member(username,data[2:-1],groupname)
+    elif data[0]=="members":
+        members =  groups_db.fetch_members(username,groupname)
+        if not members:
+            return "Does not have access to group members list"
+        return "Members : " + " ".join(members)
+    elif data[0]=="delete":
+        return groups_db.remove_group(username,groupname)
+
