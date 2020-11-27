@@ -133,7 +133,29 @@ def fetch_updates(data):
     return updates_db.fetch_updates(username)
 
 def group_chat(data):
-    pass
+    sessionID = data[-1]
+    if sessionID not in logData:
+        return "Need to log in first"
+    if len(data) < 3:
+        return "Invalid arguments"
+    username = logData[sessionID]
+    groupname = data[0]
+    msgBody = " ".join(data[1 : -1])
+    membersList = groups_db.fetch_members(username, groupname, True)
+    if not membersList:
+        return "You are not member of the group"
+    for targetUser in membersList:
+        if targetUser not in toSessionID or targetUser == username:
+            continue
+        try:
+            sendtoport = toSessionID[targetUser]
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.connect(("localhost", int(sendtoport)+1024))
+            sock.send(bytes("Group {} :: {}".format(groupname, msgBody),"utf-8"))
+            sock.close()
+        except:
+            pass
+
 
 def group(data):
     sessionID = data[-1]

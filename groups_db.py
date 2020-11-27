@@ -137,7 +137,7 @@ def remove_member(username, remove_names, groupname):
     finally:
         return " ".join(deleted) + " deleted in " + groupname + "\n"
 
-def fetch_members(username,groupname):
+def fetch_members(username,groupname, for_chat = False):
     try:
         if does_member_exists(username, groupname):
             fetch_mems = c.execute("""
@@ -148,7 +148,7 @@ def fetch_members(username,groupname):
             conn.commit()
             members = []
             for member in fetch_mems:
-                if is_group_owner(member[2], groupname):
+                if not for_chat and is_group_owner(member[2], groupname):
                     members.append(member[2] + "(OWNER)")
                 else:
                     members.append(member[2])
