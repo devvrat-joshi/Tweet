@@ -1,6 +1,8 @@
 import sqlite3
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
+conn2 = sqlite3.connect('minitweet.db')
+c2 = conn2.cursor()
 
 
 c.execute("""
@@ -25,7 +27,7 @@ conn.commit()
 
 def does_user_exists(username):
     try:
-        given_users = c.execute("""
+        given_users = c2.execute("""
             SELECT * FROM users
             WHERE username = "{}"
         """.format(username))
@@ -37,7 +39,7 @@ def does_user_exists(username):
 
 def does_group_exists(groupname):
     try:
-        given_groups = c.execute("""
+        given_groups = c2.execute("""
             SELECT * FROM groups
             WHERE groupname = "{}"
         """.format(groupname))
@@ -49,11 +51,11 @@ def does_group_exists(groupname):
 
 def is_group_owner(username, groupname):
     try:
-        given_rows = c.execute("""
+        given_rows = c2.execute("""
             SELECT * FROM groups
             WHERE groupname = "{}" AND username = "{}"
         """.format(groupname, username))
-        for i in given_rows:
+        for row in given_rows:
             return True
         return False
     except:
@@ -145,11 +147,11 @@ def fetch_members(username,groupname):
             """.format(groupname))
             conn.commit()
             members = []
-            for i in fetch_mems:
-                if is_group_owner(i[2], groupname):
-                    members.append(i[2] + "(OWNER)")
+            for member in fetch_mems:
+                if is_group_owner(member[2], groupname):
+                    members.append(member[2] + "(OWNER)")
                 else:
-                    members.append(i[2])
+                    members.append(member[2])
             return members
         return []
     except:
