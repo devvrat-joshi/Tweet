@@ -134,7 +134,6 @@ def parse_tweet(tweet_id, username, body, created_at):
 def fetch_feed(username, numTweets = 5, offsetPage = 1):
     tweets = []
     try:
-        tweetsData = []
         following_list = fetch_following(username)
         if not following_list:
             return []
@@ -155,3 +154,20 @@ def fetch_feed(username, numTweets = 5, offsetPage = 1):
         return tweets
     except:
         return tweets
+
+def fetch_tweets_by_tag(hashtag, numTweets = 5, numPage = 1):
+    tweets = []
+    try:
+        dataRows = c.execute("""
+            SELECT * from tweets
+            INNER JOIN tags ON tags.tweet_id=tweets.tweet_id
+            WHERE tags.tag = '{t}'
+            LIMIT {l}
+            OFFSET {o}
+        """.format(t = hashtag, l = numTweets, o = numTweets * (numPage - 1)))
+        for data in dataRows:
+            tweets.append(parse_tweet(data[0], data[1], data[2], data[3]))
+        return tweets
+    except:
+        return tweets
+    

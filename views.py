@@ -194,3 +194,15 @@ def fetch_feed(data):
         return "Invalid arguments"
     tweets = tweets_db.fetch_feed(username, numTweets, numPage)
     return "".join(tweets)
+
+def fetch_hashtag(data):
+    numTweets, numPage = 5, 1
+    hashtag = data[0]
+    if len(data) == 3:
+        numTweets = int(data[1])
+    elif len(data) == 4:
+        numTweets, numPage = int(data[1]), int(data[2])
+    elif len(data) > 3:
+        return "Invalid arguments"
+    tweets = tweets_db.fetch_tweets_by_tag(hashtag, numTweets, numPage)
+    return "".join(tweets)

@@ -15,5 +15,6 @@ functions = {
     "updates": views.fetch_updates,
     "group": views.group,
     "stream": views.group_chat,
-    "feed": views.fetch_feed
+    "feed": views.fetch_feed,
+    "hashtag": views.fetch_hashtag
 }
