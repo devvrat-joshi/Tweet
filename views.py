@@ -181,3 +181,16 @@ def group(data):
     elif data[0]=="delete":
         return groups_db.remove_group(username,groupname)
 
+def fetch_feed(data):
+    sessionID, numTweets, numPage = data[-1], 5, 1
+    if sessionID not in logData:
+        return "Need to login first"
+    username = logData[sessionID]
+    if len(data) == 2:
+        numTweets = int(data[0])
+    elif len(data) == 3:
+        numTweets, numPage = int(data[0]), int(data[1])
+    elif len(data) > 3:
+        return "Invalid arguments"
+    tweets = tweets_db.fetch_feed(username, numTweets, numPage)
+    return "".join(tweets)

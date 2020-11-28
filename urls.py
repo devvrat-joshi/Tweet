@@ -14,5 +14,6 @@ functions = {
     "msg": views.send_msg,
     "updates": views.fetch_updates,
     "group": views.group,
-    "stream": views.group_chat
+    "stream": views.group_chat,
+    "feed": views.fetch_feed
 }

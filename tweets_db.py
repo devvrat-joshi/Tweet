@@ -2,6 +2,8 @@
 import sqlite3
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
+conn2 = sqlite3.connect('minitweet.db')
+c2 = conn2.cursor()
 
 # c.execute("DROP TABLE tweets;")
 conn.commit()
@@ -66,7 +68,6 @@ def get_mentions(username, body, tweet_id):
         if (word[0] == '@'):
             if does_user_exist(word[1:]):
                 mentions.append(word[1: ])
-    print("debug")
     for mention in mentions:
         post_mention_update(username,mention,tweet_id)
     
@@ -84,7 +85,6 @@ def post_tweet(username,body):
             SELECT last_insert_rowid();
         """)
         tweet_id = post_id_cursor.fetchone()[0]
-        print(tweet_id)
         hashtags = get_hastags(body)
         for tag in hashtags:
             c.execute("INSERT INTO tags (tag, tweet_id) VALUES (?, ?)", (tag, tweet_id))
@@ -105,13 +105,53 @@ def fetch_trending():
             ORDER BY 2 DESC
             LIMIT 5;
         """)
-        print(trends)
         res = ""
         rank = 1
         for trend in trends:
-            print(trend)
             res = res + ("#" + str(rank) + " " + trend[0] + " :: " + str(trend[1]) + "\n")
             rank += 1
         return res
     except:
         return "Cannot fetch trending hashtags."
+
+def fetch_following(username):
+    followingList = []
+    try:
+        followings = c2.execute("""
+            SELECT followed from followers
+            WHERE follower = ?
+        """, (username,))
+        for following in followings:
+            followingList.append(following[0])
+        return followingList
+    except:
+        return followingList
+
+def parse_tweet(tweet_id, username, body, created_at):
+    res = "{} : {} :: {} \n {} \n\n".format(username, created_at, tweet_id, body)
+    return res
+
+def fetch_feed(username, numTweets = 5, offsetPage = 1):
+    tweets = []
+    try:
+        tweetsData = []
+        following_list = fetch_following(username)
+        if not following_list:
+            return []
+        query_text = "( '" + following_list[0] + "' "
+        following_list = following_list[1:]
+        for member in following_list:
+            query_text += ", '" + member + "' "
+        query_text += ")"
+        dataRows = c.execute("""
+            SELECT * from tweets
+            WHERE username IN {a}
+            ORDER BY created_at DESC
+            LIMIT {c}
+            OFFSET {b}
+        """.format(a = query_text, c = numTweets, b= numTweets * (offsetPage - 1) ))
+        for data in dataRows:
+            tweets.append(parse_tweet(data[0], data[1], data[2], data[3]))
+        return tweets
+    except:
+        return tweets
