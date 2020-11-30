@@ -84,7 +84,7 @@ The following python modules needs to be additionally installed in order to run 
 Then the terminal prompts for the password.
 
 ### Register
-```Syntax: register <username>```
+```Syntax: register <username>```  
 Then the terminal prompts for the password and re-typing the password.
 
 <!-- USAGE EXAMPLES -->
