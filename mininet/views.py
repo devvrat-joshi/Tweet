@@ -1,4 +1,4 @@
-import users_db,followers_db,tweets_db, updates_db, groups_db
+from . import users_db,followers_db,tweets_db, updates_db, groups_db
 import socket
 tokenCounter = 1
 logData = {}

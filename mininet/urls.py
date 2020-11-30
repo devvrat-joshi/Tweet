@@ -1,4 +1,5 @@
-import views
+from . import views
+
 functions = {
     "init":views.init,
     "login":views.login,

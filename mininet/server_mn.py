@@ -3,7 +3,7 @@ import threading
 import sys
 
 LOCK = threading.Lock()
-from urls import functions
+from src.urls import functions
 
 class server:
     def __init__(self, connections , ip , port ):

@@ -6,7 +6,7 @@ socket.setdefaulttimeout(1)
 message = """HTTP/1.1 200 OK\nDate: Tue, 18 Aug 2015 15:44:04 GMT\nServer: Apache/2.2.3 (CentOS)
 Content-Type: text/html\n
 """
-from urls import functions
+from mininet.urls import functions
 
 class server:
     def __init__(self,connections,port):
