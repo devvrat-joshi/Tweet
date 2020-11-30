@@ -206,3 +206,29 @@ def fetch_hashtag(data):
         return "Invalid arguments"
     tweets = tweets_db.fetch_tweets_by_tag(hashtag, numTweets, numPage)
     return "".join(tweets)
+
+def fetch_posts(data):
+    numTweets, numPage = 5, 1
+    if data[-1] not in logData:
+        return "Login first to see posts"
+    username = logData[data[-1]]
+    if len(data) == 2:
+        numTweets = int(data[0])
+    elif len(data) == 3:
+        numTweets, numPage = int(data[0]), int(data[1])
+    elif len(data) > 3:
+        return "Invalid arguments"
+    tweets = tweets_db.fetch_posts(username, numTweets, numPage)
+    return "".join(tweets)
+
+def pin_tweet(data):
+    if data[-1] not in logData:
+        return "Login first to see posts"
+    username = logData[data[-1]]
+    if len(data)==2:
+        tweet_id = int(data[0])
+    else:
+        return "Invalid arguments"
+    if tweets_db.pin_tweet(username,tweet_id):
+        return "Pin Successful"
+    return "You have already pinned the tweet"

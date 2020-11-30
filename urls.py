@@ -16,5 +16,7 @@ functions = {
     "group": views.group,
     "stream": views.group_chat,
     "feed": views.fetch_feed,
-    "hashtag": views.fetch_hashtag
+    "hashtag": views.fetch_hashtag,
+    "posts": views.fetch_posts,
+    "pin" : views.pin_tweet
 }

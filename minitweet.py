@@ -22,9 +22,9 @@ net.addLink( h4, s1 )
 net.addLink( h5, s1 )
 net.addLink( h6, s1 )
 net.start() # mininet emulator started
-h1.cmd("python3 server.py {} &".format(h1.IP())) # h1 host is server
+h1.cmd("python3 server_mn.py {} &".format(h1.IP())) # h1 host is server
 time.sleep(2)
-h2.cmd("python3 chat_client.py {} {} &".format(h2.IP(),h1.IP())) # client
+h2.cmd("python3 chat_client_mn.py {} {} &".format(h2.IP(),h1.IP())) # client
 time.sleep(2)
 print(h1.cmd(">"))
 # h3.cmd("python3 Q3client.py 2 'client 2 asking for book 2' &") # client

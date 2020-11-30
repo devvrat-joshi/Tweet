@@ -28,6 +28,16 @@ c.execute("""
     );
 """)
 
+c.execute("""
+    CREATE TABLE IF NOT EXISTS pins (
+        id INTEGER PRIMARY KEY,
+        username VARCHAR(80) NOT NULL,
+        tweet_id INTEGER NOT NULL,
+        FOREIGN KEY (tweet_id) REFERENCES tweets(tweet_id)
+    );
+""")
+conn.commit()
+
 conn.commit()
 
 def get_hastags(body):
@@ -170,4 +180,35 @@ def fetch_tweets_by_tag(hashtag, numTweets = 5, numPage = 1):
         return tweets
     except:
         return tweets
-    
+
+def fetch_posts(username, numTweets = 5, numPage = 1):
+    tweets = []
+    try:
+        dataRows = c.execute("""
+            SELECT * from tweets
+            WHERE username = '{u}'
+            LIMIT {l}
+            OFFSET {o}
+        """.format(u = username, l = numTweets, o = numTweets * (numPage - 1)))
+        for data in dataRows:
+            tweets.append(parse_tweet(data[0], data[1], data[2], data[3]))
+        return tweets
+    except:
+        return tweets
+
+def pin_tweet(username, tweet_id):
+    try:
+        pinned_rows = c.execute("""
+        SELECT * from pins 
+        WHERE username = '{u}' AND tweet_id = {t}
+        """.format(u = username,t = tweet_id))
+        for row in pinned_rows:
+            return False
+        c.execute("""
+        INSERT INTO pins (username, tweet_id)
+        VALUES ('{u}', {t})
+        """.format(u = username,t = tweet_id))
+        conn.commit()
+        return True
+    except:
+        return False

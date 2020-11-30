@@ -2,6 +2,7 @@ import socket
 import sys, os
 import atexit
 import multiprocessing
+from getpass import getpass
 manager = multiprocessing.Manager()
 shared = manager.dict()
 def server_chat(ip, port, shared):
@@ -71,6 +72,14 @@ while 1:
         else :
             print("Post cancelled !")
         continue
+    elif command[:5] == "login":
+        password = getpass('Password: ')
+        command += " " + password
+    elif command[:8] == "register":
+        password = getpass('Password: ')
+        repassword = getpass('Re-enter Password: ')
+        command+=" "+password+" "+repassword
+    
     recData = client("localhost",12345,command+" "+sessionID).data
     if recData.find("$Logged_out$")!=-1 :
         sessionUser = "guest"

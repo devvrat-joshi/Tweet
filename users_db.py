@@ -1,6 +1,8 @@
 import sqlite3
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
+conn2 = sqlite3.connect('minitweet.db')
+c2 = conn.cursor()
 
 c.execute("""
     CREATE TABLE IF NOT EXISTS users (
@@ -68,6 +70,30 @@ def logout(username):
         return True
     except:
         return False
+
+def parse_tweet(tweet_id, username, body, created_at):
+    res = "{} : {} :: {} \n {} \n\n".format(username, created_at, tweet_id, body)
+    return res
+
+def fetch_pinned_tweets(username):
+    tweets = []
+    try:
+        pinned_tweets = c.execute(
+            """
+                SELECT *
+                FROM pins
+                JOIN tweets on pins.tweet_id=tweets.tweet_id
+                WHERE username = "{u}"
+                ORDER BY id DESC
+                LIMIT 5
+            """.format(u=username))
+        for data in pinned_tweets:
+            print(data)
+            tweets.append(parse_tweet(data[0], data[3], data[1], data[2]))
+        print(tweets)
+        return tweets
+    except:
+        return tweets
         
 def view_profile(username):
     try:
@@ -82,8 +108,10 @@ def view_profile(username):
             curr_user = user
         if not does_exist:
             return "Given username does not exists"
-        res = "{} :: Followers : {}, Following : {}".format(username,curr_user[2],curr_user[3]) 
-        
+        res = "{} :: Followers : {}, Following : {}\n".format(username,curr_user[2],curr_user[3]) 
+        pinned_tweets = fetch_pinned_tweets(username)
+        for tweets in pinned_tweets:
+            res += tweets
         return res
     except:
         return "Invalid Username"
