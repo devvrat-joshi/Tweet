@@ -1,4 +1,5 @@
 import sqlite3
+from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 conn2 = sqlite3.connect('minitweet.db')
@@ -71,8 +72,16 @@ def logout(username):
     except:
         return False
 
+def parse_tweet_body(body):
+    res = body.split()
+    lenb = len(res)
+    for i in range(lenb):
+        if res[i][0] in ['#', '@']:
+            res[i] = Fore.CYAN + res[i] + Fore.WHITE
+    return " ".join(res)
+
 def parse_tweet(tweet_id, body, created_at):
-    res = "{} :: {} \n {} \n\n".format(created_at, tweet_id, body)
+    res = Fore.CYAN + created_at + Fore.WHITE + ":: " + Fore.BLUE+ str(tweet_id) + Fore.WHITE + "\n {} \n\n".format(parse_tweet_body(body))
     return res
 
 def fetch_pinned_tweets(username):
@@ -88,7 +97,6 @@ def fetch_pinned_tweets(username):
                 LIMIT 5
             """.format(u=username))
         for data in pinned_tweets:
-            print(data)
             tweets.append(parse_tweet(data[0], data[2], data[3]))
         print(tweets)
         return tweets
@@ -107,14 +115,14 @@ def view_profile(username):
             does_exist = True
             curr_user = user
         if not does_exist:
-            return "Given username does not exists"
-        res = "{} :: Followers : {}, Following : {}\n".format(username,curr_user[2],curr_user[3]) 
+            return Fore.RED + "Given username does not exists" + Fore.WHITE
+        res = Fore.GREEN + username + Fore.WHITE + " :: Followers : " + Fore.BLUE + str(curr_user[2]) + Fore.WHITE + " Following : " + Fore.BLUE + str(curr_user[3]) + Fore.WHITE + "\n" 
         pinned_tweets = fetch_pinned_tweets(username)
         for tweets in pinned_tweets:
             res += tweets
         return res
     except:
-        return "Invalid Username"
+        return Fore.RED + "Invalid Username" + Fore.WHITE
 
 def search(pattern):
     try:
@@ -126,8 +134,7 @@ def search(pattern):
         """.format(pattern))
         res = ""
         for user in given_users:
-            res += " # "+ user[0] + "\n"
-        return "search results : \n" + res
+            res += Fore.BLUE + " # "+  Fore.WHITE + user[0] + "\n"
+        return Fore.BLUE + "search results : \n" + Fore.WHITE + res
     except Exception:
-        print(Exception.with_traceback)
-        return "Invalid search"
+        return Fore.RED + "Invalid search" + Fore.WHITE

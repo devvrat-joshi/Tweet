@@ -1,8 +1,9 @@
-from . import users_db,followers_db,tweets_db, updates_db, groups_db
+import users_db,followers_db,tweets_db, updates_db, groups_db
 import socket
 tokenCounter = 1
 logData = {}
 toSessionID = {}
+address = {}
 
 def init(data):
     global tokenCounter
@@ -10,14 +11,16 @@ def init(data):
     return str(tokenCounter)
 
 def login(data):
-    if len(data) != 3:
+    if len(data) != 4:
         return "Invalid arguments"
-    username, password,sessionID = data
+    username, password,sessionID, addr = data
+    print(address)
     if sessionID in logData:
         return "Already logged in!"
     if users_db.login(username,password):
         logData[sessionID] = username
         toSessionID[username] = sessionID
+        address[username] = addr
         return "Logged in Successfully!"
     return "Invalid Username/Password"
 
@@ -119,9 +122,11 @@ def send_msg(data):
         return "the target is not online."
     sendtoport = toSessionID[sendto]
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(("localhost", int(sendtoport)+1024))
+    print(address[sendto])
+    sock.connect((address[sendto], int(sendtoport)+1024))
     sock.send(bytes("{} :: {}".format(logData[sessionID],message),"utf-8"))
     sock.close()
+    print("SENT")
     return "Message sent."
 
 def fetch_updates(data):

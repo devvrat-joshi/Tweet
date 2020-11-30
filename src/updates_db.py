@@ -1,4 +1,5 @@
 import sqlite3
+from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 
@@ -25,7 +26,7 @@ def fetch_updates(username):
         body = ""
         up_num = 1
         for update in updates:
-            body += "#" + str(up_num) + " :" + update[2] + "\n"
+            body += Fore.CYAN + "#" + str(up_num) + Fore.WHITE + " :" + update[2] + "\n"
         if not body:
             return "No Updates.\n"
         return body
@@ -40,6 +41,6 @@ def mark_read(username):
             WHERE username = '{}' AND is_read = 0
         """.format(username))
         conn.commit()
-        return "All updates marked as read."
+        return Fore.GREEN +  "All updates marked as read." + Fore.WHITE
     except:
-        return "Unable to mark as read"
+        return Fore.RED + "Unable to mark as read" + Fore.WHITE

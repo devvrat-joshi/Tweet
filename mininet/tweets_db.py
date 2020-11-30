@@ -148,6 +148,7 @@ def fetch_following(username):
     except:
         return followingList
 
+
 def parse_tweet(tweet_id, username, body, created_at):
     res = "{} : {} :: {} \n {} \n\n".format(username, created_at, tweet_id, body)
     return res

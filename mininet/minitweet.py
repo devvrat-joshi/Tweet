@@ -11,7 +11,7 @@ net = Mininet()
 output_files = []
 
 hosts = []
-numClients = 9
+numClients = 11
 
 s1 = net.addSwitch('s1')
 c0 = net.addController('s4')
@@ -20,6 +20,7 @@ server_out = open("./tests/output/server.txt","w")
 h0 = net.addHost('h0')
 net.addLink( h0, s1 )
 for i in range(numClients):
+    time.sleep(0.2)
     output_files.append(open("./tests/output/client{}.txt".format(i + 1),"w"))
     hosts.append(net.addHost('h{}'.format(i + 1)))
     net.addLink( hosts[i], s1 )

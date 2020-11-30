@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "chat_client_mn.py", line 53, in <module>
-    sessionID = client(sys.argv[2],12345,"init").data
-  File "chat_client_mn.py", line 38, in __init__
-    self.sock.connect((ip,port))
-ConnectionRefusedError: [Errno 111] Connection refused

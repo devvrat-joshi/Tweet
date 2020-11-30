@@ -1,0 +1,347 @@
+12
+COMMAND :: register chatron1 s s
+
+Welcome to the mini-tweet team, chatron1 !!!
+
+COMMAND :: follow chatron2
+
+ successfully started following chatron2
+
+COMMAND :: msg chatron2 Ipsum amet aliquam numquam adipisci.
+
+
+
+COMMAND :: msg chatron2 Non magnam quiquia quaerat numquam sed non amet.
+
+
+
+COMMAND :: msg chatron2 Amet consectetur dolore ipsum dolore amet eius.
+
+
+
+COMMAND :: msg chatron2 Numquam dolor est porro ipsum.
+
+
+
+COMMAND :: msg chatron2 Dolor eius sit numquam dolor dolorem dolor.
+
+
+
+COMMAND :: msg chatron2 Est consectetur amet dolorem etincidunt porro.
+
+
+
+COMMAND :: msg chatron2 Magnam sed etincidunt quiquia.
+
+
+
+COMMAND :: msg chatron2 Dolore quisquam modi dolor magnam ipsum.
+
+
+
+COMMAND :: msg chatron2 Etincidunt magnam eius dolorem ut sit est.
+
+
+
+COMMAND :: msg chatron2 Quaerat consectetur voluptatem quisquam labore.
+
+
+
+COMMAND :: msg chatron2 Eius tempora dolor voluptatem.
+
+
+
+COMMAND :: msg chatron2 Sit dolor amet etincidunt quisquam.
+
+
+
+COMMAND :: msg chatron2 Est numquam dolor adipisci.
+
+
+
+COMMAND :: msg chatron2 Quisquam neque consectetur dolor ipsum porro.
+
+
+
+COMMAND :: msg chatron2 Numquam velit non adipisci non dolorem est.
+
+
+
+COMMAND :: msg chatron2 Ipsum amet non neque dolor magnam.
+
+
+
+COMMAND :: msg chatron2 Quaerat tempora est ut numquam.
+
+
+
+COMMAND :: msg chatron2 Dolor tempora modi porro.
+
+
+
+COMMAND :: msg chatron2 Adipisci quaerat non sit.
+
+
+
+COMMAND :: msg chatron2 Sed non quiquia ipsum sit velit non.
+
+
+
+COMMAND :: msg chatron2 Quiquia numquam sit porro quisquam.
+
+
+
+COMMAND :: msg chatron2 Voluptatem neque quaerat quisquam amet porro dolor neque.
+
+
+
+COMMAND :: msg chatron2 Dolore sed sit consectetur quisquam.
+
+
+
+COMMAND :: msg chatron2 Sit eius magnam quisquam dolorem.
+
+
+
+COMMAND :: msg chatron2 Sed magnam non etincidunt sit amet dolorem.
+
+
+
+COMMAND :: msg chatron2 Numquam dolor consectetur consectetur amet voluptatem adipisci.
+
+
+
+COMMAND :: msg chatron2 Labore velit dolorem numquam non amet quisquam.
+
+
+
+COMMAND :: msg chatron2 Aliquam voluptatem modi sed non neque dolore numquam.
+
+
+
+COMMAND :: msg chatron2 Sed porro est quisquam sit quisquam quisquam voluptatem.
+
+
+
+COMMAND :: msg chatron2 Ipsum dolorem quisquam modi sed est ut porro.
+
+
+
+COMMAND :: msg chatron2 Eius voluptatem consectetur numquam tempora etincidunt.
+
+
+
+COMMAND :: msg chatron2 Adipisci non quaerat voluptatem sed dolore.
+
+
+
+COMMAND :: msg chatron2 Est est dolorem tempora ipsum eius voluptatem.
+
+
+
+COMMAND :: msg chatron2 Sed voluptatem aliquam neque non dolore ipsum.
+
+
+
+COMMAND :: msg chatron2 Magnam labore dolorem sed.
+
+
+
+COMMAND :: msg chatron2 Labore quisquam tempora consectetur modi adipisci amet.
+
+
+
+COMMAND :: msg chatron2 Ipsum numquam voluptatem ipsum aliquam.
+
+
+
+COMMAND :: msg chatron2 Amet quaerat adipisci consectetur sit quaerat modi etincidunt.
+
+
+
+COMMAND :: msg chatron2 Sed amet velit ipsum magnam non dolore porro.
+
+
+
+COMMAND :: msg chatron2 Voluptatem tempora voluptatem tempora.
+
+
+
+COMMAND :: msg chatron2 Labore magnam magnam ipsum tempora.
+
+
+
+COMMAND :: msg chatron2 Aliquam velit dolore labore quiquia modi.
+
+
+
+COMMAND :: msg chatron2 Ipsum numquam modi eius eius magnam modi magnam.
+
+
+
+COMMAND :: msg chatron2 Ipsum ut dolor magnam quaerat velit eius dolorem.
+
+
+
+COMMAND :: msg chatron2 Etincidunt aliquam etincidunt numquam.
+
+
+
+COMMAND :: msg chatron2 Dolore velit sed labore quaerat dolorem magnam.
+
+
+
+COMMAND :: msg chatron2 Ipsum quiquia non modi magnam neque.
+
+
+
+COMMAND :: msg chatron2 Quaerat dolorem magnam dolore ut.
+
+
+
+COMMAND :: msg chatron2 Dolorem magnam non modi amet non numquam.
+
+
+
+COMMAND :: msg chatron2 Labore porro est ipsum neque adipisci dolorem ut.
+
+
+
+COMMAND :: msg chatron2 Sit quisquam voluptatem magnam.
+
+
+
+COMMAND :: msg chatron2 Numquam adipisci amet aliquam magnam sed.
+
+
+
+COMMAND :: msg chatron2 Neque sed eius numquam porro.
+
+
+
+COMMAND :: msg chatron2 Consectetur sed etincidunt neque.
+
+
+
+COMMAND :: msg chatron2 Magnam velit non est sit.
+
+
+
+COMMAND :: msg chatron2 Quiquia quaerat consectetur sed tempora etincidunt.
+
+
+
+COMMAND :: msg chatron2 Quisquam numquam non ut etincidunt velit est etincidunt.
+
+
+
+COMMAND :: msg chatron2 Quiquia tempora dolore sit quiquia modi porro modi.
+
+
+
+COMMAND :: msg chatron2 Aliquam ut dolorem porro.
+
+
+
+COMMAND :: msg chatron2 Numquam dolorem quisquam consectetur labore porro numquam.
+
+
+
+COMMAND :: msg chatron2 Labore dolor non sit magnam etincidunt dolorem non.
+
+
+
+COMMAND :: msg chatron2 Quaerat aliquam est sit tempora quaerat.
+
+
+
+COMMAND :: msg chatron2 Sit magnam dolor voluptatem est non.
+
+
+
+COMMAND :: msg chatron2 Ipsum velit dolore sed adipisci quisquam eius.
+
+
+
+COMMAND :: msg chatron2 Aliquam aliquam amet neque ut eius aliquam.
+
+
+
+COMMAND :: msg chatron2 Non tempora voluptatem dolorem aliquam quiquia aliquam numquam.
+
+
+
+COMMAND :: msg chatron2 Dolore labore sed est numquam porro quaerat sed.
+
+
+
+COMMAND :: msg chatron2 Dolor magnam eius labore amet amet tempora non.
+
+
+
+COMMAND :: msg chatron2 Porro non quiquia quisquam dolore etincidunt adipisci ipsum.
+
+
+
+COMMAND :: msg chatron2 Numquam ipsum aliquam tempora est quisquam.
+
+
+
+COMMAND :: msg chatron2 Eius aliquam non quisquam voluptatem ipsum.
+
+
+
+COMMAND :: msg chatron2 Porro sit est amet neque.
+
+
+
+COMMAND :: msg chatron2 Dolorem ut adipisci quiquia neque tempora neque velit.
+
+
+
+COMMAND :: msg chatron2 Eius consectetur dolor est sit sed modi magnam.
+
+
+
+COMMAND :: msg chatron2 Labore magnam dolore dolor magnam neque adipisci.
+
+
+
+COMMAND :: msg chatron2 Non ut sit amet dolore consectetur.
+
+
+
+COMMAND :: msg chatron2 Quisquam etincidunt consectetur sit velit sit quiquia.
+
+
+
+COMMAND :: msg chatron2 Consectetur neque etincidunt quaerat modi porro.
+
+
+
+COMMAND :: msg chatron2 Ut non est sit labore numquam tempora.
+
+
+
+COMMAND :: msg chatron2 Dolor quisquam non etincidunt voluptatem sit.
+
+
+
+COMMAND :: follow chatron2
+
+Already following
+
+COMMAND :: msg chatron2 Velit voluptatem tempora numquam labore.
+
+
+
+COMMAND :: msg chatron2 Ut est amet quisquam amet.
+
+
+
+COMMAND :: msg chatron2 Etincidunt ut consectetur neque eius adipisci.
+
+
+
+COMMAND :: msg chatron2 Non quiquia eius magnam quaerat quiquia est.
+

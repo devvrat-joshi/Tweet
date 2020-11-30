@@ -3,7 +3,7 @@ import threading
 import sys
 
 LOCK = threading.Lock()
-from src.urls import functions
+from urls import functions
 
 class server:
     def __init__(self, connections , ip , port ):
@@ -25,7 +25,10 @@ class server:
         try:
             data = c.recv(4096).decode().split()
             print(data)
-            c.send(bytes(functions[data[0]](data[1:]),"utf-8"))
+            if data[0]=="login":
+                c.send(bytes(functions[data[0]](data[1:]+[address[0]]),"utf-8"))
+            else:
+                c.send(bytes(functions[data[0]](data[1:]),"utf-8"))
         except:
             pass
         return

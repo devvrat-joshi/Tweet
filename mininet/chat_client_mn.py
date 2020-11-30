@@ -8,7 +8,6 @@ import multiprocessing
 manager = multiprocessing.Manager()
 shared = manager.dict()
 def server_chat(ip, port, shared):
-    print("I am running")
     while 1:
         try:
             sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -17,7 +16,6 @@ def server_chat(ip, port, shared):
             sock.bind((ip,port))
             sock.listen(5)
             c,addr = sock.accept()
-            print("I accepted", addr)
             while 1:
                 data = c.recv(1024).decode()
                 print(data)

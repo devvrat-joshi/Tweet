@@ -1,5 +1,6 @@
 # id, user, time, likes
 import sqlite3
+from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 conn2 = sqlite3.connect('minitweet.db')
@@ -111,9 +112,9 @@ def post_tweet(username,body):
             c.execute("INSERT INTO tags (tag, tweet_id) VALUES (?, ?)", (tag, tweet_id))
             conn.commit()
         get_mentions(username, body, tweet_id)
-        return "Successfully posted"
+        return Fore.GREEN + "Successfully posted" + Fore.WHITE 
     except:
-        return "Tweet cannot be posted. Try again later."
+        return Fore.RED + "Tweet cannot be posted. Try again later." + Fore.WHITE
 
 def fetch_trending():
     try:
@@ -129,11 +130,11 @@ def fetch_trending():
         res = ""
         rank = 1
         for trend in trends:
-            res = res + ("#" + str(rank) + " " + trend[0] + " :: " + str(trend[1]) + "\n")
+            res = res + (Fore.BLUE + "#" + str(rank) + Fore.WHITE + " " + trend[0] + " :: " + str(trend[1]) + "\n")
             rank += 1
         return res
     except:
-        return "Cannot fetch trending hashtags."
+        return Fore.RED + "Cannot fetch trending hashtags." + Fore.WHITE
 
 def fetch_following(username):
     followingList = []
@@ -148,8 +149,16 @@ def fetch_following(username):
     except:
         return followingList
 
+def parse_tweet_body(body):
+    res = body.split()
+    lenb = len(res)
+    for i in range(lenb):
+        if res[i][0] in ['#', '@']:
+            res[i] = Fore.CYAN + res[i] + Fore.WHITE
+    return " ".join(res)
+
 def parse_tweet(tweet_id, username, body, created_at):
-    res = "{} : {} :: {} \n {} \n\n".format(username, created_at, tweet_id, body)
+    res =  Fore.MAGENTA + username + Fore.WHITE + " : " + Fore.CYAN + created_at + Fore.WHITE + " :: " + Fore.BLUE + str(tweet_id) + Fore.WHITE+ "\n" + parse_tweet_body(body) + "\n\n"
     return res
 
 def fetch_feed(username, numTweets = 5, offsetPage = 1):
@@ -237,7 +246,7 @@ def retweet_id(username, tweet_id):
             tweet_body += tweet[2]
             post_tweet(username, tweet_body)
             post_retweet_update(username, tweet[1], tweet_id)
-            return "Retweet Successful"
-        return "Cannot Retweet"
+            return Fore.GREEN + "Retweet Successful" + Fore.WHITE
+        return Fore.RED + "Cannot Retweet" + Fore.WHITE
     except:
-        return "Cannot Retweet"
+        return Fore.RED + "Cannot Retweet" + Fore.WHITE

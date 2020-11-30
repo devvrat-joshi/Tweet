@@ -11,7 +11,6 @@ functions = {
     "search":views.search,
     "tweet":views.post_tweet,
     "trending": views.fetch_trending,
-    "chat": views.connect_chat,
     "msg": views.send_msg,
     "updates": views.fetch_updates,
     "group": views.group,

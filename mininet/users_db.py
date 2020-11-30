@@ -1,4 +1,5 @@
 import sqlite3
+from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 conn2 = sqlite3.connect('minitweet.db')
@@ -70,6 +71,14 @@ def logout(username):
         return True
     except:
         return False
+
+def parse_tweet_body(body):
+    res = body.split()
+    lenb = len(res)
+    for i in range(lenb):
+        if res[i][0] in ['#', '@']:
+            res[i] = Fore.CYAN + res[i] + Fore.WHITE
+    return " ".join(res)
 
 def parse_tweet(tweet_id, body, created_at):
     res = "{} :: {} \n {} \n\n".format(created_at, tweet_id, body)

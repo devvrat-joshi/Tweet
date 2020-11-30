@@ -1,12 +1,12 @@
 import socket
 import threading
+from colorama import init, Fore, Back, Style
 
 LOCK = threading.Lock()
 socket.setdefaulttimeout(1)
-message = """HTTP/1.1 200 OK\nDate: Tue, 18 Aug 2015 15:44:04 GMT\nServer: Apache/2.2.3 (CentOS)
-Content-Type: text/html\n
-"""
-from mininet.urls import functions
+
+from src.urls import functions
+print(Fore.GREEN + 'Server started Listening' + Fore.WHITE)
 
 class server:
     def __init__(self,connections,port):

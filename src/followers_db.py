@@ -1,4 +1,5 @@
 import sqlite3
+from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 
@@ -15,7 +16,7 @@ conn.commit()
 def add_follower(follower,followed):
     try:
         if (followed == follower):
-            return "Cannot follow yourself"
+            return Fore.RED + "Cannot follow yourself" + Fore.WHITE
         exist = c.execute("""
             SELECT username
             FROM users
@@ -25,14 +26,14 @@ def add_follower(follower,followed):
         for i in exist:
             does_exist = True
         if does_exist == False:
-            return "Invalid username"
+            return Fore.RED + "Invalid username" + Fore.WHITE
         already = c.execute("""
             SELECT *
             FROM followers
             WHERE follower="{}" and followed="{}"
         """.format(follower,followed))
         for i in already:
-            return "Already following"
+            return Fore.BLUE + "Already following" + Fore.WHITE
         c.execute("""
             INSERT INTO followers VALUES ("{}","{}")
         """.format(follower,followed))
@@ -48,9 +49,9 @@ def add_follower(follower,followed):
             WHERE username = "{}";
         """.format(follower))
         conn.commit()
-        return " successfully started following "+ followed
+        return Fore.GREEN + " successfully started following " + Fore.BLUE + followed + Fore.WHITE
     except:
-        return "Unable to follow"
+        return Fore.RED + "Unable to follow" + Fore.WHITE
 
 def remove_follower(follower,followed):
     try:
@@ -63,8 +64,7 @@ def remove_follower(follower,followed):
         for i in already:
             does_follow = True
         if does_follow != True:
-            return "Unable to unfollow"
-        # DELETE ROW
+            return Fore.RED + "Unable to unfollow" + Fore.WHITE
         c.execute("""
             DELETE FROM followers
             WHERE follower="{}" and followed="{}"
@@ -82,9 +82,9 @@ def remove_follower(follower,followed):
             WHERE username = "{}";
         """.format(follower))
         conn.commit()
-        return "Successfully Unfollowed "+ followed
+        return Fore.GREEN + "Successfully Unfollowed "+ Fore.BLUE + followed + Fore.WHITE
     except:
-        return "Unable to unfollow"
+        return Fore.RED + "Unable to unfollow" + Fore.WHITE
 
 def fetch_online(username):
     followers_list = []

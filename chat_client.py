@@ -3,10 +3,12 @@ import sys, os
 import atexit
 import multiprocessing
 from getpass import getpass
+from colorama import init, Fore, Back, Style
+
 manager = multiprocessing.Manager()
 shared = manager.dict()
+
 def server_chat(ip, port, shared):
-    print("I am running")
     while 1:
         try:
             sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -15,7 +17,6 @@ def server_chat(ip, port, shared):
             sock.bind(("localhost",port))
             sock.listen(5)
             c,addr = sock.accept()
-            print("I accepted", addr)
             while 1:
                 data = c.recv(1024).decode()
                 print(data)
@@ -42,7 +43,7 @@ class client:
                 data += k
                 if not k:
                     break        
-                # print(data)
+                
         except socket.timeout:
             pass
         self.data = data
@@ -57,12 +58,12 @@ server_process = multiprocessing.Process(target=server_chat,args=("localhost",in
 server_process.start()
 atexit.register(logout_exit)
 while 1:
-    command = input("{} : ".format(sessionUser))
+    command = input(Fore.YELLOW + "{} : ".format(sessionUser) + Fore.WHITE)
     if command == "tweet":
         file = open("data/tweet{}.txt".format(sessionID),"w")
         file.close()
         os.system("nano data/tweet{}.txt".format(sessionID))
-        command = input("Are you sure to post the tweet Y/N : ")
+        command = input(Fore.YELLOW +  "Are you sure to post the tweet Y/N : " + Fore.WHITE)
         if command[0] == 'y' or command[0] == 'Y':
             tweet = open("data/tweet{}.txt".format(sessionID),"r")
             s = tweet.read(200)
@@ -70,20 +71,20 @@ while 1:
             recData = client("localhost",12345,"tweet " + s + " " + sessionID).data
             print(recData)
         else :
-            print("Post cancelled !")
+            print(Fore.RED + "Post cancelled !" + Fore.WHITE)
         continue
     elif command[:5] == "login":
-        password = getpass('Password: ')
+        password = getpass(Fore.BLUE + 'Password: ' + Fore.WHITE)
         command += " " + password
     elif command[:8] == "register":
-        password = getpass('Password: ')
-        repassword = getpass('Re-enter Password: ')
+        password = getpass(Fore.BLUE + 'Password: ' + Fore.WHITE)
+        repassword = getpass(Fore.BLUE + 'Re-enter Password: ' + Fore.WHITE)
         command+=" "+password+" "+repassword
-    
+
     recData = client("localhost",12345,command+" "+sessionID).data
     if recData.find("$Logged_out$")!=-1 :
         sessionUser = "guest"
-        print("Logged Out Successfully !!!")
+        print(Fore.GREEN + "Logged Out Successfully !!!" + Fore.WHITE)
         continue
     elif recData.find("Logged in ")!=-1 or recData.find("Welcome") != -1:
         sessionUser = command.split()[1]
