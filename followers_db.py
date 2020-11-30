@@ -87,4 +87,28 @@ def remove_follower(follower,followed):
         return "Unable to unfollow"
 
 def fetch_online(username):
-    pass
+    followers_list = []
+    try:
+        dataRows = c.execute("""
+            SELECT follower
+            FROM followers 
+            where followed = '{u}'
+        """.format(u = username))
+        for data in dataRows:
+            followers_list.append(data[0])
+        return followers_list
+    except:
+        return followers_list
+
+def is_follower(username, target_user):
+    try:
+        dataRows = c.execute("""
+            SELECT follower
+            FROM followers 
+            where followed = '{u}' AND follower='{t}'
+        """.format(u = username,t=target_user))
+        for data in dataRows:
+            return True
+        return False
+    except:
+        return False

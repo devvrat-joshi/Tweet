@@ -1,0 +1,457 @@
+7
+COMMAND :: register tron004 s s
+
+I am running
+Welcome to the mini-tweet team, tron004 !!!
+
+COMMAND :: follow tron001
+
+ successfully started following tron001
+
+COMMAND :: follow tron002
+
+ successfully started following tron002
+
+COMMAND :: follow tron000
+
+Invalid username
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: feed
+
+tron002 : 2020-11-30 14:25:37 :: 41 
+ sit eius. #p quiquia dolor quiquia quaerat #i non quaerat #amet Numquam #dolor dolor velit Quaerat porro aliquam #Est eius velit. non voluptatem quisquam. #quaerat quaerat modi quisquam tempora Neque 
+
+tron001 : 2020-11-30 14:25:37 :: 44 
+ dolor #y #magnam Porro magnam voluptatem. velit #quaerat non #w #ut ipsum voluptatem labore. Sed #ipsum neque. voluptatem #magnam Numquam quiquia. Aliquam non porro. est amet. quiquia magnam quisquam 
+
+tron002 : 2020-11-30 14:25:37 :: 45 
+ ##adipisci. quaerat numquam etincidunt velit quiquia non. dolore aliquam #aliquam #Labore modi ut Est sed ipsum dolorem dolor #dolorem #porro tempora quisquam aliquam dolor aliquam #tempora ipsum #ali 
+
+tron001 : 2020-11-30 14:25:37 :: 48 
+ est quiquia etincidunt modi consectetur voluptatem magnam Quisquam adipisci magnam. Quisquam labore #est. ut. aliquam amet neque. #g adipisci labore. #magnam. #modi #numquam dolor tempora quiquia labo 
+
+tron002 : 2020-11-30 14:25:37 :: 50 
+ quaerat ut. dolorem #magnam #porro etincidunt labore quaerat Quaerat modi. eius #t adipisci dolore Modi Quiquia velit sit. labore. numquam consectetur Dolorem #modi non #j numquam est voluptatem. #r l 
+
+
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:38 :: 61 
+ ipsum ut. aliquam. porro. labore. etincidunt labore #velit #p porro #sed eius etincidunt Aliquam sed. dolor numquam aliquam tempora #est adipisci. Ut dolorem etincidunt etincidunt Voluptatem Tempora e 
+
+tron002 : 2020-11-30 14:25:38 :: 63 
+ ipsum Consectetur etincidunt adipisci velit. sit modi tempora dolor modi non. consectetur porro. #sit ut. consectetur non non dolorem. dolor. sed quisquam quiquia eius #non sit #sit. neque neque dolor 
+
+tron001 : 2020-11-30 14:25:38 :: 65 
+ ut ipsum tempora. #p dolor sed #dolore #o neque Quisquam #etincidunt. #g ipsum porro #c labore est quiquia magnam. dolorem labore #l quaerat etincidunt Ipsum #quisquam. labore sed Numquam neque neque 
+
+tron002 : 2020-11-30 14:25:38 :: 67 
+ Neque adipisci dolorem Dolore quaerat. quaerat. quiquia consectetur porro eius consectetur est amet amet #s Est labore aliquam #j dolore consectetur. Non dolor dolore. #f eius neque. Dolorem ipsum. qu 
+
+tron001 : 2020-11-30 14:25:38 :: 69 
+ etincidunt velit consectetur. #Labore neque #g consectetur velit neque. Labore est porro dolor quisquam. porro. quaerat #dolorem quiquia magnam Etincidunt tempora voluptatem Porro quisquam aliquam qui 
+
+
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:39 :: 78 
+ dolor sed Non dolore #porro. adipisci etincidunt. #Ut dolor neque non magnam #l dolorem quiquia quiquia est. sit dolorem labore. dolore #o ipsum labore #quaerat quaerat adipisci. est #etincidunt. dolo 
+
+tron002 : 2020-11-30 14:25:39 :: 80 
+ dolore amet ipsum sed #etincidunt #adipisci consectetur dolorem. #labore. #Quisquam numquam #amet etincidunt. est Neque voluptatem porro Numquam Dolore #neque neque non dolore etincidunt amet. amet si 
+
+tron001 : 2020-11-30 14:25:39 :: 82 
+ Neque non. #u ipsum Adipisci #c dolorem quaerat ##numquam labore #velit tempora adipisci Quaerat amet modi. magnam. neque tempora quaerat sed dolor ##eius dolor sit velit Est voluptatem #amet eius tem 
+
+tron002 : 2020-11-30 14:25:39 :: 84 
+ Neque consectetur Magnam sed #tempora dolore #quaerat #ipsum #modi. sed. quaerat tempora labore ipsum. labore Dolor tempora Dolorem #quiquia. quisquam velit Numquam #non. voluptatem #m labore #ut adip 
+
+tron001 : 2020-11-30 14:25:39 :: 86 
+ Ipsum non Magnam porro consectetur consectetur #j #eius neque est. #dolorem aliquam ipsum. ut. tempora. neque etincidunt velit consectetur quiquia amet #p #Ipsum consectetur. ipsum aliquam amet #dolor 
+
+
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:45 :: 168 
+ amet. Dolorem tempora adipisci. #b adipisci Ut Dolorem etincidunt. voluptatem. neque numquam tempora modi neque non dolore est #i aliquam Est dolore magnam sit. Aliquam quiquia #j quiquia Est amet. te 
+
+tron002 : 2020-11-30 14:25:44 :: 162 
+ dolor voluptatem #tempora. adipisci. aliquam dolor Neque quisquam sed. labore #k Dolore Amet Consectetur magnam porro Adipisci labore amet numquam sit Porro ipsum quaerat adipisci. magnam eius #amet i 
+
+tron001 : 2020-11-30 14:25:44 :: 164 
+ porro dolor aliquam quaerat velit aliquam sit. Ut Velit Sit non neque dolor ut etincidunt sit Amet sed Non aliquam quiquia #quisquam Numquam ut dolore eius tempora consectetur #k porro velit porro qui 
+
+tron002 : 2020-11-30 14:25:44 :: 166 
+ labore consectetur. porro Ut #dolorem voluptatem Porro sit neque. #dolor eius #sit magnam. quisquam est Magnam aliquam. dolorem neque non non ut eius eius dolore. aliquam consectetur dolor. velit ut D 
+
+tron001 : 2020-11-30 14:25:43 :: 151 
+ amet sed dolorem. magnam non. Quaerat amet. Dolor #w #quiquia. ut dolor magnam velit. ipsum Quiquia Dolorem velit dolorem #d ut ipsum labore consectetur consectetur Dolor Non #etincidunt. ipsum Dolore 
+
+
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:45 :: 168 
+ amet. Dolorem tempora adipisci. #b adipisci Ut Dolorem etincidunt. voluptatem. neque numquam tempora modi neque non dolore est #i aliquam Est dolore magnam sit. Aliquam quiquia #j quiquia Est amet. te 
+
+tron002 : 2020-11-30 14:25:45 :: 170 
+ amet #quisquam Labore Quisquam quisquam non est amet labore aliquam Ipsum voluptatem. #k etincidunt modi sit modi Numquam labore. voluptatem. tempora Dolor adipisci non. sed eius #magnam etincidunt #q 
+
+tron001 : 2020-11-30 14:25:45 :: 172 
+ tempora quaerat. adipisci. velit dolorem numquam labore adipisci dolore. dolor Etincidunt adipisci est est adipisci Modi modi dolore Numquam #etincidunt numquam dolorem amet. consectetur dolorem etinc 
+
+tron002 : 2020-11-30 14:25:44 :: 162 
+ dolor voluptatem #tempora. adipisci. aliquam dolor Neque quisquam sed. labore #k Dolore Amet Consectetur magnam porro Adipisci labore amet numquam sit Porro ipsum quaerat adipisci. magnam eius #amet i 
+
+tron001 : 2020-11-30 14:25:44 :: 164 
+ porro dolor aliquam quaerat velit aliquam sit. Ut Velit Sit non neque dolor ut etincidunt sit Amet sed Non aliquam quiquia #quisquam Numquam ut dolore eius tempora consectetur #k porro velit porro qui 
+
+
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:48 :: 205 
+ sed. numquam. non Sed quaerat. sed. Sit adipisci Neque etincidunt. magnam Neque tempora Dolore tempora non dolorem quisquam adipisci dolore dolore modi quaerat neque. dolore etincidunt etincidunt numq 
+
+tron001 : 2020-11-30 14:25:47 :: 188 
+ Porro non Porro quisquam. ut porro velit quiquia. adipisci dolorem magnam ut consectetur dolorem. amet quisquam neque Etincidunt quaerat. quisquam eius non. Amet etincidunt modi #Adipisci est porro qu 
+
+tron002 : 2020-11-30 14:25:47 :: 190 
+ dolor dolor ipsum labore. adipisci #q #e magnam sed quaerat. sit #voluptatem. Est #dolorem porro Dolorem #quisquam Ipsum Labore consectetur dolore ut Magnam est #etincidunt #eius #consectetur #volupta 
+
+tron001 : 2020-11-30 14:25:47 :: 193 
+ #labore. velit ut. sit. dolorem sit sed #aliquam. quiquia #adipisci #modi Porro amet quaerat quaerat #a #labore #a #amet velit #non. Amet Magnam eius numquam magnam #dolore ut Voluptatem non quiquia A 
+
+tron002 : 2020-11-30 14:25:47 :: 196 
+ Aliquam labore Tempora eius amet adipisci numquam adipisci Dolor modi voluptatem #est sed Magnam ut labore. modi voluptatem magnam eius etincidunt #f numquam porro amet quisquam consectetur quiquia Qu 
+
+
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:48 :: 205 
+ sed. numquam. non Sed quaerat. sed. Sit adipisci Neque etincidunt. magnam Neque tempora Dolore tempora non dolorem quisquam adipisci dolore dolore modi quaerat neque. dolore etincidunt etincidunt numq 
+
+tron002 : 2020-11-30 14:25:48 :: 207 
+ Consectetur Quisquam modi. est Dolorem adipisci magnam #adipisci magnam quaerat porro Labore est Modi dolorem aliquam neque quiquia aliquam labore. quiquia sit magnam tempora. amet ut eius. dolor. sit 
+
+tron001 : 2020-11-30 14:25:48 :: 210 
+ labore. adipisci sit tempora Non #i eius magnam modi voluptatem consectetur. sed. #Labore voluptatem sit. Consectetur sit. modi adipisci quiquia. #Voluptatem quaerat Neque #Dolore modi modi est. tempo 
+
+tron001 : 2020-11-30 14:25:47 :: 188 
+ Porro non Porro quisquam. ut porro velit quiquia. adipisci dolorem magnam ut consectetur dolorem. amet quisquam neque Etincidunt quaerat. quisquam eius non. Amet etincidunt modi #Adipisci est porro qu 
+
+tron002 : 2020-11-30 14:25:47 :: 190 
+ dolor dolor ipsum labore. adipisci #q #e magnam sed quaerat. sit #voluptatem. Est #dolorem porro Dolorem #quisquam Ipsum Labore consectetur dolore ut Magnam est #etincidunt #eius #consectetur #volupta 
+
+
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:48 :: 205 
+ sed. numquam. non Sed quaerat. sed. Sit adipisci Neque etincidunt. magnam Neque tempora Dolore tempora non dolorem quisquam adipisci dolore dolore modi quaerat neque. dolore etincidunt etincidunt numq 
+
+tron002 : 2020-11-30 14:25:48 :: 207 
+ Consectetur Quisquam modi. est Dolorem adipisci magnam #adipisci magnam quaerat porro Labore est Modi dolorem aliquam neque quiquia aliquam labore. quiquia sit magnam tempora. amet ut eius. dolor. sit 
+
+tron001 : 2020-11-30 14:25:48 :: 210 
+ labore. adipisci sit tempora Non #i eius magnam modi voluptatem consectetur. sed. #Labore voluptatem sit. Consectetur sit. modi adipisci quiquia. #Voluptatem quaerat Neque #Dolore modi modi est. tempo 
+
+tron002 : 2020-11-30 14:25:48 :: 212 
+ labore dolor. ut eius sit Numquam Ut est quaerat sed. porro. quisquam est. voluptatem #a aliquam magnam magnam porro etincidunt eius #velit dolore Sed Quisquam dolor quiquia aliquam Quiquia eius modi 
+
+tron001 : 2020-11-30 14:25:48 :: 215 
+ sed Consectetur modi Quiquia #adipisci. amet quisquam #c numquam. #x numquam sit quiquia. neque #numquam porro sit amet Amet quiquia Voluptatem Non modi Porro voluptatem #m neque quisquam quiquia aliq 
+
+
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: feed
+
+tron002 : 2020-11-30 14:25:49 :: 222 
+ #sit. sed voluptatem ipsum voluptatem ipsum tempora est tempora voluptatem #n dolor voluptatem sit aliquam tempora adipisci #sed. amet. Dolore ut ipsum labore adipisci quaerat. sed #adipisci. Quisquam 
+
+tron001 : 2020-11-30 14:25:49 :: 224 
+ non dolorem magnam Eius #quaerat amet ipsum sed sed. #n #f Tempora Non modi magnam voluptatem consectetur velit quiquia. numquam. Ipsum non #v eius dolore quaerat. quiquia aliquam dolore Quisquam magn 
+
+tron002 : 2020-11-30 14:25:49 :: 226 
+ quaerat ipsum #Sit magnam. Tempora non est. ut aliquam #ut amet Dolor #t amet quiquia etincidunt modi dolor dolore Dolorem modi #c Neque sed magnam consectetur #modi #q magnam. consectetur #labore mag 
+
+tron001 : 2020-11-30 14:25:49 :: 228 
+ neque Ut neque velit. est dolorem non quiquia. voluptatem velit sit est porro Porro velit quaerat consectetur Magnam Quiquia amet Velit #p est Sit modi. sit quiquia. numquam dolor ut ut dolorem est. T 
+
+tron002 : 2020-11-30 14:25:49 :: 230 
+ consectetur velit #adipisci. velit quaerat numquam #velit sit #a dolore. #neque sed. Etincidunt quaerat Quaerat Labore quisquam. voluptatem non tempora ut quiquia eius #voluptatem aliquam. dolor #Modi 
+
+
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:51 :: 258 
+ adipisci Velit Quisquam quaerat adipisci etincidunt labore velit consectetur etincidunt adipisci #Sed magnam est. ##ut. magnam Porro non. etincidunt #aliquam ut. sed #non neque #l dolore porro #p #qua 
+
+tron002 : 2020-11-30 14:25:51 :: 260 
+ etincidunt labore. aliquam Voluptatem consectetur est sed. Non quisquam #m sed Eius neque dolor labore amet. Tempora numquam Sed eius quaerat aliquam. Non modi #numquam neque. adipisci tempora porro s 
+
+tron001 : 2020-11-30 14:25:51 :: 263 
+ #eius dolore labore etincidunt modi velit quiquia dolorem ut Aliquam ipsum tempora numquam dolor quiquia ut ipsum Non #i eius. ipsum. numquam voluptatem consectetur ut. dolorem sit Eius velit. consect 
+
+tron002 : 2020-11-30 14:25:51 :: 265 
+ adipisci numquam dolore. tempora tempora eius #t tempora amet labore. tempora #sit aliquam #s velit amet quaerat quisquam quaerat. #Velit dolor etincidunt amet dolorem Non dolor porro non dolore dolor 
+
+tron001 : 2020-11-30 14:25:51 :: 268 
+ porro. eius #m Porro quisquam quisquam voluptatem etincidunt neque amet Sed #consectetur #dolore #s neque. quisquam voluptatem. neque ut non etincidunt quiquia dolor amet Ipsum magnam quaerat porro #o 
+
+
+
+COMMAND :: feed
+
+tron001 : 2020-11-30 14:25:51 :: 258 
+ adipisci Velit Quisquam quaerat adipisci etincidunt labore velit consectetur etincidunt adipisci #Sed magnam est. ##ut. magnam Porro non. etincidunt #aliquam ut. sed #non neque #l dolore porro #p #qua 
+
+tron002 : 2020-11-30 14:25:51 :: 260 
+ etincidunt labore. aliquam Voluptatem consectetur est sed. Non quisquam #m sed Eius neque dolor labore amet. Tempora numquam Sed eius quaerat aliquam. Non modi #numquam neque. adipisci tempora porro s 
+
+tron001 : 2020-11-30 14:25:51 :: 263 
+ #eius dolore labore etincidunt modi velit quiquia dolorem ut Aliquam ipsum tempora numquam dolor quiquia ut ipsum Non #i eius. ipsum. numquam voluptatem consectetur ut. dolorem sit Eius velit. consect 
+
+tron002 : 2020-11-30 14:25:51 :: 265 
+ adipisci numquam dolore. tempora tempora eius #t tempora amet labore. tempora #sit aliquam #s velit amet quaerat quisquam quaerat. #Velit dolor etincidunt amet dolorem Non dolor porro non dolore dolor 
+
+tron001 : 2020-11-30 14:25:51 :: 268 
+ porro. eius #m Porro quisquam quisquam voluptatem etincidunt neque amet Sed #consectetur #dolore #s neque. quisquam voluptatem. neque ut non etincidunt quiquia dolor amet Ipsum magnam quaerat porro #o 
+
+
+
+COMMAND :: updates
+
+No Updates.
+
+
+COMMAND :: updates mark read
+
+All updates marked as read.
+
+COMMAND :: tweet
+
+Successfully posted
+COMMAND :: updates
+

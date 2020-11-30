@@ -18,5 +18,7 @@ functions = {
     "feed": views.fetch_feed,
     "hashtag": views.fetch_hashtag,
     "posts": views.fetch_posts,
-    "pin" : views.pin_tweet
+    "pin" : views.pin_tweet,
+    "retweet" : views.retweet_id,
+    "online" : views.fetch_online
 }

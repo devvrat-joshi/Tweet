@@ -71,8 +71,8 @@ def logout(username):
     except:
         return False
 
-def parse_tweet(tweet_id, username, body, created_at):
-    res = "{} : {} :: {} \n {} \n\n".format(username, created_at, tweet_id, body)
+def parse_tweet(tweet_id, body, created_at):
+    res = "{} :: {} \n {} \n\n".format(created_at, tweet_id, body)
     return res
 
 def fetch_pinned_tweets(username):
@@ -80,16 +80,16 @@ def fetch_pinned_tweets(username):
     try:
         pinned_tweets = c.execute(
             """
-                SELECT *
+                SELECT tweets.tweet_id, pins.username, tweets.body, tweets.created_at
                 FROM pins
-                JOIN tweets on pins.tweet_id=tweets.tweet_id
-                WHERE username = "{u}"
+                INNER JOIN tweets on pins.tweet_id=tweets.tweet_id
+                WHERE pins.username = "{u}"
                 ORDER BY id DESC
                 LIMIT 5
             """.format(u=username))
         for data in pinned_tweets:
             print(data)
-            tweets.append(parse_tweet(data[0], data[3], data[1], data[2]))
+            tweets.append(parse_tweet(data[0], data[2], data[3]))
         print(tweets)
         return tweets
     except:

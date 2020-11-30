@@ -109,7 +109,12 @@ def connect_chat(data):
 def send_msg(data):
     if len(data) < 3:
         return "Invalid arguments"
+    if data[-1] not in logData:
+        return "Need to login first"
     sendto, message, sessionID = data[0], " ".join(data[1:-1]) ,data[-1]
+    is_follower = followers_db.is_follower(logData[sessionID], sendto)
+    if not is_follower:
+        return "Can only chat with followers"
     if sendto not in toSessionID:
         return "the target is not online."
     sendtoport = toSessionID[sendto]
@@ -232,3 +237,34 @@ def pin_tweet(data):
     if tweets_db.pin_tweet(username,tweet_id):
         return "Pin Successful"
     return "You have already pinned the tweet"
+
+def retweet_id(data):
+    if data[-1] not in logData:
+        return "Need to login first."
+    username = logData[data[-1]]
+    if len(data)==2:
+        tweet_id = int(data[0])
+    else:
+        return "Invalid arguments"
+    return tweets_db.retweet_id(username,tweet_id)
+
+
+def fetch_online(data):
+    sessionID, numFollowers, numPage = data[-1], 5, 1
+    if sessionID not in logData:
+        return "Need to login first"
+    username = logData[sessionID]
+    if len(data) == 2:
+        numFollowers = int(data[0])
+    elif len(data) == 3:
+        numFollowers, numPage = int(data[0]), int(data[1])
+    elif len(data) > 3:
+        return "Invalid arguments"
+    online_followers = []
+    followers = followers_db.fetch_online(username)
+    for member in followers:
+        if member in toSessionID:
+            online_followers.append(member)
+    s,e  = ( numPage - 1) * numFollowers , numPage * numFollowers
+    return "\n* ".join(online_followers[s : e])
+        

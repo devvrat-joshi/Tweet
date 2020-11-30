@@ -71,6 +71,17 @@ def post_mention_update(from_user, target_user, tweet_id):
     except:
         pass
 
+def post_retweet_update(from_user, target_user, tweet_id):
+    body = from_user + " retweeted your tweet" + str(tweet_id) + ". "
+    try:
+        c.execute("""
+                INSERT INTO updates (username, body)
+                VALUES ('{}', '{}')
+            """.format(target_user, body))
+        conn.commit()
+    except:
+        pass
+
 def get_mentions(username, body, tweet_id):
     body = body.split()
     mentions = []
@@ -187,6 +198,7 @@ def fetch_posts(username, numTweets = 5, numPage = 1):
         dataRows = c.execute("""
             SELECT * from tweets
             WHERE username = '{u}'
+            ORDER BY created_at DESC
             LIMIT {l}
             OFFSET {o}
         """.format(u = username, l = numTweets, o = numTweets * (numPage - 1)))
@@ -212,3 +224,20 @@ def pin_tweet(username, tweet_id):
         return True
     except:
         return False
+
+def retweet_id(username, tweet_id):
+    try:
+        found_tweets = c.execute("""
+            SELECT * from tweets
+            WHERE tweet_id = {t}
+        """.format(t = tweet_id))
+        tweet_body = ""
+        for tweet in found_tweets:
+            tweet_body = "** Retweeted ** username: {u} tweet_id : {t}\n".format(u = tweet[1], t = tweet_id)
+            tweet_body += tweet[2]
+            post_tweet(username, tweet_body)
+            post_retweet_update(username, tweet[1], tweet_id)
+            return "Retweet Successful"
+        return "Cannot Retweet"
+    except:
+        return "Cannot Retweet"

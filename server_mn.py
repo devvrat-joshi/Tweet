@@ -3,10 +3,6 @@ import threading
 import sys
 
 LOCK = threading.Lock()
-socket.setdefaulttimeout(1)
-message = """HTTP/1.1 200 OK\nDate: Tue, 18 Aug 2015 15:44:04 GMT\nServer: Apache/2.2.3 (CentOS)
-Content-Type: text/html\n
-"""
 from urls import functions
 
 class server:
@@ -25,16 +21,14 @@ class server:
 
     @staticmethod
     def new_thread(c,address):
-        try:
-            while 1:
-                data = c.recv(1024).decode().split()
-                print(data)
-
-        except socket.timeout:
-            c.send(bytes(functions[data[0]](data[1:]),"utf-8"))
-            LOCK.release()
-            return
         LOCK.release()
+        try:
+            data = c.recv(4096).decode().split()
+            print(data)
+            c.send(bytes(functions[data[0]](data[1:]),"utf-8"))
+        except:
+            pass
+        return
   
     def thread(self):
         c,address = self.sock.accept()
@@ -42,17 +36,6 @@ class server:
         new = threading.Thread(server.new_thread(c,address))
         new.start()
         return new
-while 1:
-    try:
-        S = server(1000,sys.argv[1],12345)
-        S.start()
-    except Exception:
-        # print(Exception)
-        try:
-            LOCK.release()
-        except:
-            pass
-        try:
-            S.sock.close()
-        except:
-            pass
+
+S = server(1000,sys.argv[1],12345)
+S.start()

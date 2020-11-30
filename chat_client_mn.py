@@ -3,6 +3,8 @@ import sys, os
 import atexit
 import multiprocessing
 
+# 1 : IP own, 2 : IP server, 3 : Client_id
+
 manager = multiprocessing.Manager()
 shared = manager.dict()
 def server_chat(ip, port, shared):
@@ -56,22 +58,16 @@ def logout_exit():
 server_process = multiprocessing.Process(target=server_chat,args=(sys.argv[1],int(sessionID)+1024,shared))
 server_process.start()
 atexit.register(logout_exit)
-file = open("command.txt","r")
+file = open("./tests/input/client{}.txt".format(sys.argv[3]),"r")
 while 1:
     command = file.readline()
-    if command == "tweet":
-        file = open("data/tweet{}.txt".format(sessionID),"w")
-        file.close()
-        os.system("nano data/tweet{}.txt".format(sessionID))
-        command = input("Are you sure to post the tweet Y/N : ")
-        if command[0] == 'y' or command[0] == 'Y':
-            tweet = open("data/tweet{}.txt".format(sessionID),"r")
-            s = tweet.read(200)
-            tweet.close()
-            recData = client(sys.argv[2],12345,"tweet " + s + " " + sessionID).data
-            print(recData)
-        else :
-            print("Post cancelled !")
+    if not command:
+        break
+    print("COMMAND :: " + command)
+    if command.find("tweet")!=-1:
+        s = file.readline()
+        recData = client(sys.argv[2],12345,"tweet " + s + " " + sessionID).data
+        print(recData)
         continue
     recData = client(sys.argv[2],12345,command+" "+sessionID).data
     if recData.find("$Logged_out$")!=-1 :
@@ -80,4 +76,4 @@ while 1:
         continue
     elif recData.find("Logged in ")!=-1 or recData.find("Welcome") != -1:
         sessionUser = command.split()[1]
-    print(recData)
+    print(recData+"\n")
