@@ -1,0 +1,8 @@
+1. group create ninja_clan
+2. group add ninja_clan Hattori Shinzo dev3 [....]
+3. group remove ninja_clan dev1 dev2
+4. group fetch ninja_clan
+5. group 
+msg username chatbody
+stream groupname chatbody
+6. group delete ninjas_clan
