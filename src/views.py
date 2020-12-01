@@ -143,7 +143,7 @@ def group_chat(data):
             sendtoport = toSessionID[targetUser]
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.connect(("localhost", int(sendtoport)+1024))
-            sock.send(bytes("Group " + Fore.CYAN + groupname + Fore.WHITE + " :: {}".format(msgBody),"utf-8"))
+            sock.send(bytes("Group " + Fore.CYAN + groupname + Fore.WHITE + " :: " + Fore.CYAN + username + Fore.WHITE + " " + msgBody,"utf-8"))
             sock.close()
         except:
             pass
@@ -251,7 +251,7 @@ def fetch_online(data):
     followers = followers_db.fetch_online(username)
     for member in followers:
         if member in toSessionID:
-            online_followers.append(member)
+            online_followers.append(Fore.GREEN + "*" + Fore.WHITE + member)
     s,e  = ( numPage - 1) * numFollowers , numPage * numFollowers
-    return ("\n " + Fore.GREEN + "*" + Fore.WHITE).join(online_followers[s : e])
+    return ("\n").join(online_followers[s : e])
         

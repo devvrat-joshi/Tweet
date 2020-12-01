@@ -3,8 +3,6 @@ import sqlite3
 from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
-conn2 = sqlite3.connect('minitweet.db')
-c2 = conn2.cursor()
 
 # c.execute("DROP TABLE tweets;")
 conn.commit()
@@ -39,7 +37,6 @@ c.execute("""
 """)
 conn.commit()
 
-conn.commit()
 
 def get_hastags(body):
     body = body.split()
@@ -73,8 +70,8 @@ def post_mention_update(from_user, target_user, tweet_id):
         pass
 
 def post_retweet_update(from_user, target_user, tweet_id):
-    body = from_user + " retweeted your tweet" + str(tweet_id) + ". "
     try:
+        body = from_user + " retweeted your tweet" + str(tweet_id) + ". "
         c.execute("""
                 INSERT INTO updates (username, body)
                 VALUES ('{}', '{}')
@@ -139,7 +136,7 @@ def fetch_trending():
 def fetch_following(username):
     followingList = []
     try:
-        followings = c2.execute("""
+        followings = c.execute("""
             SELECT followed from followers
             WHERE follower = ?
         """, (username,))
@@ -242,10 +239,11 @@ def retweet_id(username, tweet_id):
         """.format(t = tweet_id))
         tweet_body = ""
         for tweet in found_tweets:
-            tweet_body = "** Retweeted ** username: {u} tweet_id : {t}\n".format(u = tweet[1], t = tweet_id)
+            target_user = tweet[1]
+            tweet_body = "** Retweeted ** username: {u} tweet_id : {t}\n".format(u = target_user, t = tweet_id)
             tweet_body += tweet[2]
             post_tweet(username, tweet_body)
-            post_retweet_update(username, tweet[1], tweet_id)
+            post_retweet_update(username, target_user, tweet_id)
             return Fore.GREEN + "Retweet Successful" + Fore.WHITE
         return Fore.RED + "Cannot Retweet" + Fore.WHITE
     except:
