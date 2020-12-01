@@ -410,22 +410,67 @@ This table stores information about all the groups and the number of members in 
 This table stores information about all the groups members corresponding to different groups. Only the group owner can add or remove members from the group. The group owner can also delete the group.
 
 
+### Flowchart of Login
+![](https://i.imgur.com/DDIsrGY.png)
+
+### Flowchart of Tweet
+![](https://i.imgur.com/8txLtpK.png)
+
+### Flowchart of Chat
+![](https://i.imgur.com/1FhZ85a.png)
+
 
 ## Testing
 
+### Mininet
+- A concurrent server runs at host h0.
+- The topology is a single topology
+- There are 11 clients and the types of the workload queries for client is given below.
+
+#### Type 1 Clients
+- These are the clients which queries for the commands which does not require login.
+- Client 1,2,3 in the test script have 10000 such queries per client.
+- Queries are given below:
+1. search <regex>
+2. profile <username>
+3. trending
+4. hashtag
+
+#### Type 2 Clients
+- These clients login with a particular username which is already registered.
+- Then they generate tweets with the help of lorem library.
+- After tweets are generated, random words in the tweets are assigned the "#" tags.
+- Some tags which are meant to be trended are also included in these tweets.
+- Client 4,5 are these clients in the tests scripts.
+1. Tweet intensive
+
+#### Type 3 Clients
+- These are the clients which asks for updates and feed and do some tweets.
+- Client 6,7 are these clients in the tests scripts.
+1. Updates
+2. Tweet
+3. Feed intensive process.
+
+#### Type 4 Clients
+- These are the clients which register a user, then do some retweets of tweets by the users of other clients.
+- After that they logout and again register a new user and follow this loop for 200 times.
+- Client 8,9 are these clients in the tests scripts.
+1. Register 200 users and then retweet
+
+#### Type 5 Clients
+- These are the clients which chat with other clients.
+- Client 10,11 are these clients in the tests scripts.
+1. Chat with each other
+
 ### Server Performance
+#### Tweets are limited to 200 characters. There is also some limit in twitter for tweet size.
 ![](https://i.imgur.com/RQleUTO.png)
 
+#### Number of Queries served by the server.
+- After running ```make``` command, a real time update of the number and names of the queries answered by the server is shown on the terminal.
+- The time is shown on the top right corner. Counting the time was started when the server started.
+
 ![](https://i.imgur.com/TY1cklN.gif)
-
-![](https://i.imgur.com/DDIsrGY.png)
-
-
-![](https://i.imgur.com/8txLtpK.png)
-
-
-![](https://i.imgur.com/1FhZ85a.png)
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
