@@ -107,7 +107,7 @@ A simplistic version of Twitter with a robust design and rich set of features. M
 ## Getting Started
 
 ### Dependencies
-The following python modules needs to be additionally installed in order to run the files.
+The following modules needs to be additionally installed in order to run the files.
 * pip3
   ```sh
   pip3 install colorama sqlite3
@@ -149,7 +149,6 @@ The following python modules needs to be additionally installed in order to run 
 ✅ Logout  
 ✅ Search Registered Users  
 ✅ Follow/Unfollow Any User  
-❌ Control Add/Delete Followers  
 ✅ Post Tweets  
 ✅ Categorize Tweets with Hashtags  
 
@@ -159,7 +158,6 @@ The following python modules needs to be additionally installed in order to run 
 ✅ Initiate Chat Session with Followers  
 ✅ Retweet Tweets  
 ✅ Scale Server to Handle Multiple Requests  
-❌ Multiple Instances of Server  
 
 ### Security Features
 ✅ User Authenticate With Server to Access Features  
