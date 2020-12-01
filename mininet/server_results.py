@@ -54,11 +54,10 @@ cmd = {
     "retweet" : 0,
     "online" : 0
 }
-
+new_file = open("results.csv","w")
 file = open("tests/output/server.txt","r")
 def main(stdscr):
     global total
-    start = time.time()
     curses.curs_set(0)
     curses.init_pair(3, 3, 55)
     stdscr.bkgd(' ', curses.color_pair(3)|curses.A_BOLD)
@@ -69,6 +68,7 @@ def main(stdscr):
     x = list(commands.keys())
     a = list(cmd.keys())
     time.sleep(5)
+    start = time.time()
     for i in range(10):
         stdscr.addstr(2+i*2,5,x[i],curses.color_pair(3))
     for i in range(10,20):
@@ -84,8 +84,12 @@ def main(stdscr):
                     commands[x[i]]+=1
                     break
             # log.info(commands)
-        tm = "time in seconds : " + str(int(time.time()-start))
-        total = "Total Queries Served: {}".format(sum(list(commands.values())))
+        tnm = str(int(time.time()-start))
+        tm = "time in seconds : " + tnm
+        tot = sum(list(commands.values()))
+        total = "Total Queries Served: {}".format(tot)
+        if tot:
+            new_file.write("{},{}\n".format(time.time()-start,tot))
         stdscr.addstr(0,(w-len(total))//2,total,curses.color_pair(8))
         stdscr.addstr(0,w-len(tm)-2,tm,curses.color_pair(8))
         for i in range(10):
