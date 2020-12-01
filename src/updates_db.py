@@ -6,7 +6,7 @@ c = conn.cursor()
 c.execute("""
     CREATE TABLE IF NOT EXISTS updates (
         update_id INTEGER PRIMARY KEY,
-        username VARCHAR(80) NOT NULL UNIQUE,
+        username VARCHAR(80) NOT NULL,
         body VARCHAR(300) NOT NULL,
         created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         is_read BOOL DEFAULT 0
