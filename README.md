@@ -241,6 +241,7 @@ To get the list of all online followers.
 Sends the chat message_statement to the target_user from the current online
 
 ### Manage Group
+![](https://i.imgur.com/cxijThF.png)
 
 #### Create Group
 ```Syntax: group create <group_name>```
@@ -265,6 +266,9 @@ Deletes the entire group_name. The current user must be group owner to execute t
 ### Group Chat
 ```Syntax: stream <group_name> [msg_statement]```
 To send the msg_statement to the group members. The current user must be group member to send messages in group chat.
+![](https://i.imgur.com/eeqvXqk.png)
+
+
 
 
 ## Client and Server Side Logic
@@ -388,6 +392,7 @@ This table stores information about all the groups members corresponding to diff
 ### Server Performance
 ![](https://i.imgur.com/RQleUTO.png)
 
+![](https://github.com/devvrat-joshi/Tweet/blob/master/RD07mj7686.gif)
 
 
 <!-- USAGE EXAMPLES -->
