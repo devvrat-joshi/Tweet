@@ -416,7 +416,7 @@ This table stores information about all the groups members corresponding to diff
 ### Server Performance
 ![](https://i.imgur.com/RQleUTO.png)
 
-![](https://github.com/devvrat-joshi/Tweet/blob/master/RD07mj7686.gif)
+![](https://i.imgur.com/TY1cklN.gif)
 
 ![](https://i.imgur.com/DDIsrGY.png)
 
