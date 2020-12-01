@@ -1,49 +1,124 @@
 <!-- TABLE OF CONTENTS -->
-presentation, report, video
+<!-- presentation, report, video
 
 - HLD: Document detailing the networking paradigm. Handled Use cases. 
 - LLD: Proposed structure of networking paradigm. 
 - Client and Server side of the logic. 
 - State management. 
 - Commands and Action management. 
-- Security aspects.
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">File Structure</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Dependencies</a></li>
-        <li><a href="#prerequisites">Running the Files</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-  </ol>
+- Security aspects. -->
+
+## Table of Contents
+
+* <details>
+
+   <summary>Getting Started</summary>
+   
+    + [Dependencies](#dependencies)
+    + [Running the Files](#running-the-files)
+    + [Running the tests](#running-the-tests)
+
 </details>
+
+* <details>
+   <summary>Feature Checklist</summary>
+
+    + [Basic Features:](#basic-features-)
+    + [Advanced Features](#advanced-features)
+    + [Security Features](#security-features)
+    + [Bonus Features](#bonus-features)
+    + [Extra Features](#extra-features)
+    
+</details>
+
+* <details>
+   <summary>Commands</summary>
+   
+    + [Login 🔒](#login---)
+    + [Register](#register)
+    + [Logout](#logout)
+    + [Follow](#follow)
+    + [Unfollow](#unfollow)
+    + [Search](#search)
+    + [Profile](#profile)
+    + [Tweet](#tweet)
+    + [Posts](#posts)
+    + [Trending](#trending)
+    + [Hashtag](#hashtag)
+    + [Feed](#feed)
+    + [Updates 🔔](#updates---)
+    + [Mark Read Updates](#mark-read-updates)
+    + [Pin](#pin)
+    + [Retweet 🔁](#retweet---)
+    + [Online](#online)
+    + [Chat](#chat)
+    + [Manage Group](#manage-group)
+      - [Create Group](#create-group)
+      - [Add Group Members](#add-group-members)
+      - [Remove Group Members](#remove-group-members)
+      - [Fetch Group Members List](#fetch-group-members-list)
+      - [Delete Group](#delete-group)
+    + [Group Chat](#group-chat)
+
+</details>
+
+* <details>
+
+   <summary>Client and Server Side Logic</summary>
+   
+  * [Server Side Logic](#server-side-logic)
+  * [Client Side Logic](#client-side-logic)
+</details>
+
+- [State Management](#state-management)
+- [Security Aspects](#security-aspects)
+
+* <details>
+
+   <summary>Design</summary>
+   
+  * [Database Structure](#database-structure)
+    + [Users Table](#users-table)
+    + [Followers Table](#followers-table)
+    + [Tweets Table](#tweets-table)
+    + [Pins Table](#pins-table)
+    + [Tags Table](#tags-table)
+    + [Updates](#updates)
+    + [Group Table](#group-table)
+    + [Group Members Table](#group-members-table)
+  * [Flowchart of Login](#flowchart-of-login)
+  * [Flowchart of Tweet](#flowchart-of-tweet)
+  * [Flowchart of Chat](#flowchart-of-chat)
+  </details>
+
+* <details>
+
+   <summary>Testing</summary>
+   
+    + [Type 1 Clients](#type-1-clients)
+    + [Type 2 Clients](#type-2-clients)
+    + [Type 3 Clients](#type-3-clients)
+    + [Type 4 Clients](#type-4-clients)
+    + [Type 5 Clients](#type-5-clients)
+  * [Server Performance](#server-performance)
+  * [Number of Queries served by the server.](#number-of-queries-served-by-the-server)
+  * [Usage](#usage)
+  * [Roadmap](#roadmap)
+  * [Contributing](#contributing)
+  * [License](#license)
+  * [Contact](#contact)
+  * [Acknowledgements](#acknowledgements)
+
+</details>
+  
+
 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
-### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-
-
+To be done
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -293,8 +368,8 @@ To send the msg_statement to the group members. The current user must be group m
 
 
 
-## Client and Server Side Logic
-### Server Side Logic
+# Client and Server Side Logic
+## Server Side Logic
 - Server is a multi-threaded concurrent server, which can handle around 4500 queries per minute.
 - Whenever server receives a query, it checks the first word of the query.
 - The server creates a new thread per query.
@@ -303,7 +378,7 @@ To send the msg_statement to the group members. The current user must be group m
 - Server will run that function and pass the data from the client as argument.
 - The state maintanance and database design is under the topic, HLD, LLD.
 
-### Client Side Logic
+## Client Side Logic
 
 - When client program starts, it sends to server a command named "init".
 - Server will return a token number to that client which will be stored by client for the future use.
@@ -316,7 +391,7 @@ To send the msg_statement to the group members. The current user must be group m
 
 
 
-## State Management
+# State Management
 
 - Client sends init command to server whenever client program starts running.
 - Server will return a unique token number to client.
@@ -329,7 +404,7 @@ To send the msg_statement to the group members. The current user must be group m
 - Accessing the personal data requires login.
 - This is how, server maintains state of every client.
 
-## Security Aspects
+# Security Aspects
 - For user specific commands, the user should be first logged in from the client program.
 - Otherwise the features cannot be accessed.
 - The authentication process is explained in state management section.
@@ -337,9 +412,9 @@ To send the msg_statement to the group members. The current user must be group m
 - When user types the password, it is obsured and is not shown on screen.
 
 
-## Design
+# Design
 
-### Database Structure
+## Database Structure
 
 ![](https://i.imgur.com/FldgbA8.png)
 
@@ -410,33 +485,33 @@ This table stores information about all the groups and the number of members in 
 This table stores information about all the groups members corresponding to different groups. Only the group owner can add or remove members from the group. The group owner can also delete the group.
 
 
-### Flowchart of Login
+## Flowchart of Login
 ![](https://i.imgur.com/DDIsrGY.png)
 
-### Flowchart of Tweet
+## Flowchart of Tweet
 ![](https://i.imgur.com/8txLtpK.png)
 
-### Flowchart of Chat
+## Flowchart of Chat
 ![](https://i.imgur.com/1FhZ85a.png)
 
 
-## Testing
+# Testing
 
-### Mininet
+## Mininet
 - A concurrent server runs at host h0.
 - The topology is a single topology
 - There are 11 clients and the types of the workload queries for client is given below.
 
-#### Type 1 Clients
+### Type 1 Clients
 - These are the clients which queries for the commands which does not require login.
 - Client 1,2,3 in the test script have 10000 such queries per client.
-- Queries are given below:
-1. search <regex>
-2. profile <username>
+- Queries are given below
+1. search ```<regex>```
+2. profile ```<username>```
 3. trending
 4. hashtag
 
-#### Type 2 Clients
+### Type 2 Clients
 - These clients login with a particular username which is already registered.
 - Then they generate tweets with the help of lorem library.
 - After tweets are generated, random words in the tweets are assigned the "#" tags.
@@ -444,29 +519,29 @@ This table stores information about all the groups members corresponding to diff
 - Client 4,5 are these clients in the tests scripts.
 1. Tweet intensive
 
-#### Type 3 Clients
+### Type 3 Clients
 - These are the clients which asks for updates and feed and do some tweets.
 - Client 6,7 are these clients in the tests scripts.
 1. Updates
 2. Tweet
 3. Feed intensive process.
 
-#### Type 4 Clients
+### Type 4 Clients
 - These are the clients which register a user, then do some retweets of tweets by the users of other clients.
 - After that they logout and again register a new user and follow this loop for 200 times.
 - Client 8,9 are these clients in the tests scripts.
 1. Register 200 users and then retweet
 
-#### Type 5 Clients
+### Type 5 Clients
 - These are the clients which chat with other clients.
 - Client 10,11 are these clients in the tests scripts.
 1. Chat with each other
 
-### Server Performance
-#### Tweets are limited to 200 characters. There is also some limit in twitter for tweet size.
+## Server Performance
+- Tweets are limited to 200 characters. There is also some limit in twitter for tweet size.
 ![](https://i.imgur.com/RQleUTO.png)
 
-#### Number of Queries served by the server.
+## Number of Queries served by the server.
 - After running ```make``` command, a real time update of the number and names of the queries answered by the server is shown on the terminal.
 - The time is shown on the top right corner. Counting the time was started when the server started.
 
@@ -509,20 +584,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
