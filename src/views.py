@@ -1,15 +1,23 @@
+"""
+Here we extract the data from the command arguments and using the Database utility functions in other files, it finally executes the given commands
+"""
+
 from . import users_db,followers_db,tweets_db, updates_db, groups_db
 from colorama import init, Fore, Back, Style
 import socket
 tokenCounter = 1
+#dictionaries to map sessionID to username and vice versa as well
 logData = {}
 toSessionID = {}
 
+#runs when a client connects to the server socket
 def init(data):
+    #assign new sessionID to each new client
     global tokenCounter
     tokenCounter += 1
     return str(tokenCounter)
 
+#when client attempts login
 def login(data):
     if len(data) != 3:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
@@ -22,6 +30,7 @@ def login(data):
         return Fore.GREEN + "Logged in Successfully!" + Fore.WHITE
     return Fore.RED + "Invalid Username/Password" + Fore.WHITE
 
+#when a username is attempted to be registered
 def register(data):
     if len(data) != 4:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
@@ -37,6 +46,7 @@ def register(data):
     else:
         return Fore.RED + "User already exists" + Fore.WHITE
 
+#logout the username
 def logout(data):
     if len(data) != 1:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
@@ -69,12 +79,14 @@ def remove_follower(data):
     follower = logData[sessionID]
     return followers_db.remove_follower(follower, followed)
 
+#views the profile of username
 def view_profile(data):
     if len(data) != 2:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
     username, sessionID = data
     return users_db.view_profile(username)
 
+#search for a username
 def search(data):
     if len(data) != 2:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
@@ -90,9 +102,11 @@ def post_tweet(data):
     username, body = logData[sessionID], " ".join(data[: -1])
     return tweets_db.post_tweet(username,body)
 
+#fetch the trending hashtags
 def fetch_trending(data):
     return tweets_db.fetch_trending()
 
+#for 1to1 chat message
 def send_msg(data):
     if len(data) < 3:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
@@ -104,6 +118,7 @@ def send_msg(data):
         return Fore.RED + "Can only chat with followers" + Fore.WHITE
     if sendto not in toSessionID:
         return Fore.GREEN +  "the target is not online." + Fore.WHITE
+    #now Main-server attempts to connect to the chat-server at client side
     sendtoport = toSessionID[sendto]
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect(("localhost", int(sendtoport)+1024))
@@ -111,6 +126,7 @@ def send_msg(data):
     sock.close()
     return Fore.GREEN + "Message sent." + Fore.WHITE
 
+#fetch the updates for the given username
 def fetch_updates(data):
     if len(data) not in [1, 3]:
         return Fore.RED + "Invalid arguments" + Fore.WHITE
@@ -124,6 +140,7 @@ def fetch_updates(data):
             return updates_db.mark_read(username)
     return updates_db.fetch_updates(username)
 
+#to send the message in a group
 def group_chat(data):
     sessionID = data[-1]
     if sessionID not in logData:
@@ -136,10 +153,13 @@ def group_chat(data):
     membersList = groups_db.fetch_members(username, groupname, True)
     if not membersList:
         return Fore.RED + "You are not member of the group" + Fore.WHITE
+    #for every member
     for targetUser in membersList:
+        #leave the offline users and the original sender
         if targetUser not in toSessionID or targetUser == username:
             continue
         try:
+            #send the message to the chat-servers on the clients
             sendtoport = toSessionID[targetUser]
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.connect(("localhost", int(sendtoport)+1024))
@@ -148,7 +168,7 @@ def group_chat(data):
         except:
             pass
 
-
+#group management :add members, remove members, create, delete
 def group(data):
     sessionID = data[-1]
     if len(data) < 2:
@@ -173,6 +193,7 @@ def group(data):
     elif data[0]=="delete":
         return groups_db.remove_group(username,groupname)
 
+#generate feed for the given user
 def fetch_feed(data):
     sessionID, numTweets, numPage = data[-1], 5, 1
     if sessionID not in logData:
@@ -187,6 +208,7 @@ def fetch_feed(data):
     tweets = tweets_db.fetch_feed(username, numTweets, numPage)
     return "".join(tweets)
 
+#fetch the tweets with the given hashtag
 def fetch_hashtag(data):
     numTweets, numPage = 5, 1
     hashtag = data[0]
@@ -199,6 +221,7 @@ def fetch_hashtag(data):
     tweets = tweets_db.fetch_tweets_by_tag(hashtag, numTweets, numPage)
     return "".join(tweets)
 
+#fetch the tweets posted by the current logged in users
 def fetch_posts(data):
     numTweets, numPage = 5, 1
     if data[-1] not in logData:
@@ -213,6 +236,7 @@ def fetch_posts(data):
     tweets = tweets_db.fetch_posts(username, numTweets, numPage)
     return "".join(tweets)
 
+#pin a tweet to profile
 def pin_tweet(data):
     if data[-1] not in logData:
         return Fore.RED + "Login first to see posts" + Fore.WHITE
@@ -235,7 +259,7 @@ def retweet_id(data):
         return Fore.RED + "Invalid arguments" + Fore.WHITE
     return tweets_db.retweet_id(username,tweet_id)
 
-
+#fetch the list of online followers
 def fetch_online(data):
     sessionID, numFollowers, numPage = data[-1], 5, 1
     if sessionID not in logData:

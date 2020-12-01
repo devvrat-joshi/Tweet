@@ -1,3 +1,7 @@
+"""
+It contains the mapping the command that we receive from client and the corresponding function we have to run for it.
+"""
+
 from . import views
 
 functions = {

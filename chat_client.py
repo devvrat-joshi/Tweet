@@ -8,6 +8,7 @@ from colorama import init, Fore, Back, Style
 manager = multiprocessing.Manager()
 shared = manager.dict()
 
+#it runs a chat-server as a separate forked process in the background, which listens for receiving chat messages at client
 def server_chat(ip, port, shared):
     while 1:
         try:
@@ -48,17 +49,24 @@ class client:
             pass
         self.data = data
 
-
-sessionID = client("localhost",12345,"init").data
-sessionUser = 'guest'
-print(sessionID)
+#if the client faces an exception or closes, makes sure that the user is logged out
 def logout_exit():
     client("localhost", 12345, "logout")
+
+#first generate a unique sessionID for the given client with the server
+#every request after it contains the sessionID for the server to uniquely identify the client and the state of it
+sessionID = client("localhost",12345,"init").data
+#default is guest for client, when not logged in [ It is just for interface purpose]
+sessionUser = 'guest'
+print(sessionID)
+
 server_process = multiprocessing.Process(target=server_chat,args=("localhost",int(sessionID)+1024,shared))
 server_process.start()
 atexit.register(logout_exit)
-while 1:
+
+while True:
     command = input(Fore.YELLOW + "{} : ".format(sessionUser) + Fore.WHITE)
+    #open the text editor, in case for tweet command to post a new tweet
     if command == "tweet":
         file = open("data/tweet{}.txt".format(sessionID),"w")
         file.close()
@@ -73,15 +81,20 @@ while 1:
         else :
             print(Fore.RED + "Post cancelled !" + Fore.WHITE)
         continue
+    #take password as obscure input in case of login
     elif command[:5] == "login":
         password = getpass(Fore.BLUE + 'Password: ' + Fore.WHITE)
         command += " " + password
+    #take password as obscure input two times in case of register
     elif command[:8] == "register":
         password = getpass(Fore.BLUE + 'Password: ' + Fore.WHITE)
         repassword = getpass(Fore.BLUE + 'Re-enter Password: ' + Fore.WHITE)
         command+=" "+password+" "+repassword
-
+        
+    #sessionID is sent with every request
     recData = client("localhost",12345,command+" "+sessionID).data
+
+    #change the sessionUser variable (which just stores username for interface purpose) in case of logout or login or register
     if recData.find("$Logged_out$")!=-1 :
         sessionUser = "guest"
         print(Fore.GREEN + "Logged Out Successfully !!!" + Fore.WHITE)

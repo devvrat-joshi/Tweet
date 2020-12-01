@@ -1,3 +1,15 @@
+"""
+Function for manipulating basic user data and other utility functions
+
+register_check(username): check if the username if already registered, if registered return false
+register(username, password): registers the username and password, return true if successfull
+login(username,password): to check if the username and password are valid, return true if successfully checked
+logout(username): to logout a given user
+fetch_pinned_tweets(username): to fetch the tweets which are pinned by the given username for his/her profile
+view_profile(username): returns the profile data of the given username
+search(pattern): returns lists of all registered users matchin the search pattern
+"""
+
 import sqlite3
 from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
@@ -5,6 +17,7 @@ c = conn.cursor()
 conn2 = sqlite3.connect('minitweet.db')
 c2 = conn.cursor()
 
+#table for users
 c.execute("""
     CREATE TABLE IF NOT EXISTS users (
         username VARCHAR(80) NOT NULL PRIMARY KEY UNIQUE,

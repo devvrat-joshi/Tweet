@@ -1,7 +1,15 @@
+"""
+For fetching the unread notifications/updates and marking the unread updates are read.
+
+fetch_updates(username): fetch the unread updates for a given username
+mark_read(username): mark the unread updates as read for a given username
+"""
 import sqlite3
 from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
+
+#the updates table
 
 c.execute("""
     CREATE TABLE IF NOT EXISTS updates (

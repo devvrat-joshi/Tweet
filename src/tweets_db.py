@@ -1,10 +1,26 @@
-# id, user, time, likes
+"""
+Functions related to commands related to tweets.
+
+get_hastags(body): parse the tweet's body and return list of hastags in it
+does_user_exist(username): checks if the user exists or not
+post_mention_update(from_user, target_user, tweet_id): to post an update to the target user about a mention in a tweet
+post_retweet_update(from_user, target_user, tweet_id): post update to target user about about a retweet of his tweet
+get_mentions(username, body, tweet_id): parse the tweet body and return the list of mentioned usernames in it
+post_tweet(username,body):  post a tweet by username and given tweet body
+fetch_trending(): fetch the topmost trending hashtags
+fetch_following(username): fetch the list of user whom 'username' is following
+fetch_feed(username, numTweets = 5, offsetPage = 1): fetch the feed for a given username, feed here is the tweets by the user 'username' is following
+fetch_tweets_by_tag(hashtag, numTweets = 5, numPage = 1): fetch the list of tweets with the given hastag
+fetch_posts(username, numTweets = 5, numPage = 1): fetch the posts that were written by the given username
+pin_tweet(username, tweet_id): pin the given tweet to username's profile
+retweet_id(username, tweet_id): to retweet with the given retweet_id from given 'username'
+"""
 import sqlite3
 from colorama import init, Fore, Back, Style
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 
-# c.execute("DROP TABLE tweets;")
+#the table to store tweets
 conn.commit()
 c.execute("""
     CREATE TABLE IF NOT EXISTS tweets (
@@ -17,7 +33,7 @@ c.execute("""
 """)
 
 conn.commit()
-
+#table to store the hastags for tweet_ids
 c.execute("""
     CREATE TABLE IF NOT EXISTS tags (
         id INTEGER PRIMARY KEY,
@@ -27,6 +43,7 @@ c.execute("""
     );
 """)
 
+#table to store the pin tweet_id for usernames
 c.execute("""
     CREATE TABLE IF NOT EXISTS pins (
         id INTEGER PRIMARY KEY,
@@ -71,7 +88,7 @@ def post_mention_update(from_user, target_user, tweet_id):
 
 def post_retweet_update(from_user, target_user, tweet_id):
     try:
-        body = from_user + " retweeted your tweet" + str(tweet_id) + ". "
+        body = from_user + " retweeted your tweet " + str(tweet_id) + ". "
         c.execute("""
                 INSERT INTO updates (username, body)
                 VALUES ('{}', '{}')

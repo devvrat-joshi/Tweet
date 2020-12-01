@@ -1,10 +1,23 @@
+"""
+Contains function related to commands for group management
+
+does_user_exists(username): check if username exists else false
+does_group_exists(groupname): check if the groupname exists and is valid
+is_group_owner(username, groupname): check if the username is the owner of groupname or not
+does_member_exists(username, groupname): check if the username is member of given groupname
+create_group(username, groupname): to create a new group and mark the username as its owner
+add_member(username, add_names, groupname): to add members to the group, takes a list of usernames as argument
+remove_member(username, remove_names, groupname): to remove members to the group, takes a list of usernames as argument
+fetch_members(username,groupname, for_chat = False): fetch the list of members for the given groupname, ony if the username is part of that groupname
+remove_group(username, groupname): to delete an entire group
+"""
 import sqlite3
 conn = sqlite3.connect('minitweet.db')
 c = conn.cursor()
 conn2 = sqlite3.connect('minitweet.db')
 c2 = conn2.cursor()
 
-
+#the table to have group data
 c.execute("""
     CREATE TABLE IF NOT EXISTS groups (
         groupname VARCHAR(80) NOT NULL PRIMARY KEY UNIQUE,
@@ -15,6 +28,7 @@ c.execute("""
 
 conn.commit()
 
+#table to store group members data
 c.execute("""
     CREATE TABLE IF NOT EXISTS groupmembers (
         group_id INTEGER PRIMARY KEY,

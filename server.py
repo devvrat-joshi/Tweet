@@ -2,6 +2,7 @@ import socket
 import threading
 from colorama import init, Fore, Back, Style
 
+# Multi-threaded server
 LOCK = threading.Lock()
 
 from src.urls import functions
