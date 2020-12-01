@@ -165,7 +165,8 @@ To search the registered usernames which matches with the given pattern as *pref
 View profile of the given username. In a user's profile, we can see
 - number of followers
 - the number of users he/she is following 
-- pinned tweets. 
+- pinned tweets.    
+ 
 ![](https://i.imgur.com/LITw2GD.png)
 
 
@@ -186,7 +187,8 @@ Opens a text editor (nano). Once done, save (Ctrl + S) and exit the text editor.
 ```Syntax: posts <tweets_per_page = 5>  <page_number = 1>```  
 To view the latest personal tweets posted by the user that is currently logged in.
 - tweets_per_page (default = 5) are the number of tweets that will be visible in a single page.
-- page_number (default = 1) is used to switch to a different page.
+- page_number (default = 1) is used to switch to a different page.   
+
 ![](https://i.imgur.com/OmuBzey.png)
 
 
@@ -210,24 +212,39 @@ To view the latest tweets of a particular hashtag.
 To view the personalised feed which includes the latest tweets of the profiles you are following.
 - tweets_per_page (default = 5) are the number of tweets that will be visible in a single page.
 - page_number (default = 1) is used to switch to a different page.
+  
+  
+![](https://i.imgur.com/rPjcO4n.png)
+   
+![](https://i.imgur.com/8CwJijV.png)
+
+
 
 
 ### Updates 🔔
 ```Syntax: updates```
-To view the latest updates/notifications. User is posted updates when 
+To view the *unread* latest updates/notifications. User is posted updates when 
 - when he/she is mentioned in a tweet
-- his tweet is retweeted by some user
+- his tweet is retweeted by some user    
+
+![](https://i.imgur.com/fcV6T7P.png)
+
 
 ### Mark Read Updates 
-
+```Syntax: updates mark read```
+Mark all the unread updates as read.
 
 ### Pin
 ```Syntax: pin <tweet_id>```  
 To pin a to your profile, give the tweet_id as an argument to pin that particular tweet. The pinned tweet will be visible in the user's profile.
+![](https://i.imgur.com/srVGf3m.png)
+
+
 
 ### Retweet 🔁
 ```Syntax: retweet <tweet_id>```  
 To retweet a given tweet, give the tweet_id as an argument and the tweet will be retweeted with your username.
+![](https://i.imgur.com/uBM2nVj.png)
 
 
 ### Online
@@ -235,10 +252,15 @@ To retweet a given tweet, give the tweet_id as an argument and the tweet will be
 To get the list of all online followers.
 - followers_per_page (default = 8) are the number of tweets that will be visible in a single page.
 - page_number (default = 1) is used to switch to a different page.
+ 
+![](https://i.imgur.com/rgQ0Fxe.png)
+
 
 ### Chat
 ```Syntax: msg <target_user> [message_statement]```  
 Sends the chat message_statement to the target_user from the current online
+![](https://i.imgur.com/lQbiQ2S.png)
+
 
 ### Manage Group
 ![](https://i.imgur.com/cxijThF.png)
@@ -387,12 +409,20 @@ This table stores information about all the groups and the number of members in 
 
 This table stores information about all the groups members corresponding to different groups. Only the group owner can add or remove members from the group. The group owner can also delete the group.
 
+
+
 ## Testing
 
 ### Server Performance
 ![](https://i.imgur.com/RQleUTO.png)
 
-![](https://github.com/devvrat-joshi/Tweet/blob/master/RD07mj7686.gif)
+![](https://i.imgur.com/DDIsrGY.png)
+
+
+![](https://i.imgur.com/8txLtpK.png)
+
+
+![](https://i.imgur.com/1FhZ85a.png)
 
 
 <!-- USAGE EXAMPLES -->
