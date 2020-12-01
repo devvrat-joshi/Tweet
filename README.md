@@ -1,5 +1,12 @@
 <!-- TABLE OF CONTENTS -->
 presentation, report, video
+
+- HLD: Document detailing the networking paradigm. Handled Use cases. 
+- LLD: Proposed structure of networking paradigm. 
+- Client and Server side of the logic. 
+- State management. 
+- Commands and Action management. 
+- Security aspects.
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
@@ -79,6 +86,52 @@ The following python modules needs to be additionally installed in order to run 
 3. Real-time server activity can be seen on the screen
 4. Access the text output files in ```mininet/tests/output/```
 
+# Feature Checklist
+### Basic Features:
+✅ Register New User
+✅ Login
+✅ Get Updates
+✅ Logout
+✅ Search Registered Users
+✅ Follow/Unfollow Any User
+❌ Control Add/Delete Followers
+✅ Post Tweets
+✅ Categorize Tweets with Hashtags
+
+### Advanced Features
+✅ Search and Display Tweets Under Specific Hashtags
+✅ Fetch List of Online Followers
+✅ Initiate Chat Session with Followers
+✅ Retweet Tweets
+✅ Scale Server to Handle Multiple Requests
+❌ Multiple Instances of Server
+
+### Security Features
+✅ User Authenticate With Server to Access Features
+✅ Obscured Password Input
+
+### Bonus Features
+✅ Pin Tweets To The Profile
+✅ Anyone Can View The Profile and The Pinned Tweets
+✅ Create Groups
+✅ Add/Remove Members From a Group
+✅ Check Group Owner/Admin and Members
+✅ Broadcast A Message To All The Members Of Group
+✅ Delete Group
+✅ Attractive Interface
+
+### Extra Features
+✅ Get Notification 
+- If Someone Mentions You In Their Tweet  
+- If your Tweet is Retweeted   
+
+### Client and Server Side Logic
+#### Server Side Logic
+- Server is a multi-threaded concurrent server, which can handle around 4500 queries per minute.
+- Whenever server receives a query, it checks the first word of the query.
+- The first wors is the command which client is asking the server to execute
+
+
 # Commands
 ### Login 🔒
 ```Syntax: login <username>```  
@@ -119,9 +172,8 @@ Opens a text editor (nano). Once done, save (Ctrl + S) and exit the text editor.
 ### Posts
 ```Syntax: posts <tweets_per_page = 5>  <page_number = 1>```  
 To view the latest personal tweets posted by the user that is currently logged in.
-- tweets_per_page (default = 5), are the number of tweets that will be visible at once.
-- page_number (default = 1), is used to switch to the next page or previous page, to move through the 
-To get personal tweets with numTweets_per_page is the number of tweets that are to be fetched per page, and page_number is the page number of the above mentioned scheme. Default value of numTweets_per_page is 5 and page_number is 1 if they are not given as argument to the command.
+- tweets_per_page (default = 5) are the number of tweets that will be visible in a single page.
+- page_number (default = 1) is used to switch to a different page.
 
 
 
@@ -132,31 +184,52 @@ Get the top 5 trending hashtags in the last 24 hours along with the count of eac
 
 ### Hashtag
 ```Syntax: hashtag <hashtag_name> <tweets_per_page> <page_number>```  
-To view the tweets of a particular hashtag. The number of tweets per page can be given as argument by tweets_per_page and the page number can be given by page_number. The default tweets per page is 5 and page_number is 1.
+To view the latest tweets of a particular hashtag. 
+- tweets_per_page (default = 5) are the number of tweets that will be visible in a single page.
+- page_number (default = 1) is used to switch to a different page.
 
 
 ### Feed
 ```Syntax: feed <tweets_per_page> <page_number> ```
-To get the personalised feed which includes the tweets of the profiles whom you are following. The number of tweets per page can be given as argument by tweets_per_page and the page number can be given by page_number. The default tweets per page is 5 and page_number is 1.
+To view the personalised feed which includes the latest tweets of the profiles you are following.
+- tweets_per_page (default = 5) are the number of tweets that will be visible in a single page.
+- page_number (default = 1) is used to switch to a different page.
 
 ### Pin
 ```Syntax: pin <tweet_id>```  
-To pin the tweet to your profile, give the tweet_id as an argument to pin that particular tweet.
+To pin a to your profile, give the tweet_id as an argument to pin that particular tweet. The pinned tweet will be visible in the user's profile.
 
 ### Retweet
 ```Syntax: retweet <tweet_id>```  
-To retweet a tweet, give the tweet_id as an argument and and the tweet will be retweeted with your username.
+To retweet a given tweet, give the tweet_id as an argument and the tweet will be retweeted with your username.
 
 
 ### Online
-```Syntax: online```  
+```Syntax: online <followers_per_page> <page_number>```  
 To get the list of all online followers.
+- followers_per_page (default = 8) are the number of tweets that will be visible in a single page.
+- page_number (default = 1) is used to switch to a different page.
 
 ### Chat
-```Syntax: online```  
-
+```Syntax: msg <target_user> [message_statement]```  
+Sends the chat message_statement to the target_user from the current online
 
 ### Group
+
+#### Create Group
+```Syntax: group create <group_name>```
+Create a group of group_name with the current online user as the admin/owner.
+
+#### Add Group Members
+```Syntax: group add <group_name> <add_member1> [<add_member2> <add_member3> ...] ```
+Adds the list of given usernames in the group_name. The current user must be group owner to execute this command.
+
+#### Remove Group Members
+```Syntax: group add <group_name> <add_member1> [<add_member2> <add_member3> ...] ```
+Removes the list of given usernames from the group_name. The current user must be group owner to execute this command.
+
+### Fetch Group Members List
+```Syntax
 
 
 <!-- USAGE EXAMPLES -->
