@@ -83,53 +83,47 @@ The following python modules needs to be additionally installed in order to run 
    ```sh
    make 
    ```
-3. Real-time server activity can be seen on the screen
+3. Real-time server activity can be seen on the screen.
 4. Access the text output files in ```mininet/tests/output/```
 
 # Feature Checklist
 ### Basic Features:
-✅ Register New User
-✅ Login
-✅ Get Updates
-✅ Logout
-✅ Search Registered Users
-✅ Follow/Unfollow Any User
-❌ Control Add/Delete Followers
-✅ Post Tweets
-✅ Categorize Tweets with Hashtags
+✅ Register New User  
+✅ Login  
+✅ Get Updates  
+✅ Logout  
+✅ Search Registered Users  
+✅ Follow/Unfollow Any User  
+❌ Control Add/Delete Followers  
+✅ Post Tweets  
+✅ Categorize Tweets with Hashtags  
 
 ### Advanced Features
-✅ Search and Display Tweets Under Specific Hashtags
-✅ Fetch List of Online Followers
-✅ Initiate Chat Session with Followers
-✅ Retweet Tweets
-✅ Scale Server to Handle Multiple Requests
-❌ Multiple Instances of Server
+✅ Search and Display Tweets Under Specific Hashtags  
+✅ Fetch List of Online Followers  
+✅ Initiate Chat Session with Followers  
+✅ Retweet Tweets  
+✅ Scale Server to Handle Multiple Requests  
+❌ Multiple Instances of Server  
 
 ### Security Features
-✅ User Authenticate With Server to Access Features
-✅ Obscured Password Input
+✅ User Authenticate With Server to Access Features  
+✅ Obscured Password Input  
 
 ### Bonus Features
-✅ Pin Tweets To The Profile
-✅ Anyone Can View The Profile and The Pinned Tweets
-✅ Create Groups
-✅ Add/Remove Members From a Group
-✅ Check Group Owner/Admin and Members
-✅ Broadcast A Message To All The Members Of Group
-✅ Delete Group
-✅ Attractive Interface
+✅ Pin Tweets To The Profile  
+✅ Anyone Can View The Profile and The Pinned Tweets  
+✅ Create Groups  
+✅ Add/Remove Members From a Group  
+✅ Check Group Owner/Admin and Members  
+✅ Broadcast A Message To All The Members Of Group  
+✅ Delete Group  
+✅ Attractive Interface  
 
 ### Extra Features
-✅ Get Notification 
+✅ Get Notification  
 - If Someone Mentions You In Their Tweet  
 - If your Tweet is Retweeted   
-
-### Client and Server Side Logic
-#### Server Side Logic
-- Server is a multi-threaded concurrent server, which can handle around 4500 queries per minute.
-- Whenever server receives a query, it checks the first word of the query.
-- The first wors is the command which client is asking the server to execute
 
 
 # Commands
@@ -156,7 +150,7 @@ To start unfollowing someone
 
 ### Search
 ```Syntax: search <username_pattern>```  
-To search the registered usernames which matches with the given pattern as **prefix**.
+To search the registered usernames which matches with the given pattern as *prefix*.
 
 ### Profile
 ```Syntax: profile <target_username>```  
@@ -214,7 +208,7 @@ To get the list of all online followers.
 ```Syntax: msg <target_user> [message_statement]```  
 Sends the chat message_statement to the target_user from the current online
 
-### Group
+### Manage Group
 
 #### Create Group
 ```Syntax: group create <group_name>```
@@ -228,8 +222,40 @@ Adds the list of given usernames in the group_name. The current user must be gro
 ```Syntax: group add <group_name> <add_member1> [<add_member2> <add_member3> ...] ```
 Removes the list of given usernames from the group_name. The current user must be group owner to execute this command.
 
-### Fetch Group Members List
-```Syntax
+#### Fetch Group Members List
+```Syntax: group members <group_name>```
+Fetches the list of members for the group_name. The current user must be a member of the group.
+
+#### Delete Group
+```Syntax: group delete <group_name>```
+Deletes the entire group_name. The current user must be group owner to execute this command.
+
+### Group Chat
+```Syntax: stream <group_name> [msg_statement]```
+To send the msg_statement to the group members. The current user must be group member to send messages in group chat.
+
+
+## Client and Server Side Logic
+### Server Side Logic
+- Server is a multi-threaded concurrent server, which can handle around 4500 queries per minute.
+- Whenever server receives a query, it checks the first word of the query.
+- The server creates a new thread per query.
+- The first word is the command which client is asking the server to execute.
+- Server will look into the dictionary of commands and if the command is present in the list, then there will be an entry of a function corresponding to that command.
+- Server will run that function and pass the data from the client as argument.
+- The state maintanance and database design is under the topic, HLD, LLD.
+
+### Client Side Logic
+
+- When client program starts, it sends to server a command named "init".
+- Server will return a token number to that client which will be stored by client for the future use.
+- For every input command from the user, client opens a TCP connection with the server and also sends this token number so that the server can maintain a state of this particular client.
+- The client program also starts a server on its side, so that if the main server receives a chat message that is to be send to the client, then it can connect to the server at client side.
+- Client program gives an input for the user, from where user can enter all the commands that are to be executed by the server.
+- First the user has to enter the credentials and then the server will map the token number of that client to the username of that client after authentication is successful.
+- If a tweet is to be sent, then client program will open nano editor.
+- User types the tweet in this editor and after pressing "Y", the tweet will be posted with the credentials of client.
+
 
 
 <!-- USAGE EXAMPLES -->
@@ -239,6 +265,11 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
+
+## State Management
+###
+
+## Security Aspects
 
 
 <!-- ROADMAP -->
