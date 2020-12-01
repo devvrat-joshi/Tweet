@@ -1,7 +1,7 @@
-import socket
-import sys, os
-import atexit
-import multiprocessing
+import socket       # socket
+import sys, os      
+import atexit       # runs at exit, keyboard interrupt.
+import multiprocessing  
 from getpass import getpass
 from colorama import init, Fore, Back, Style
 
@@ -30,24 +30,26 @@ def server_chat(ip, port, shared):
                 pass
 
 
-
+# Client side timeout
 socket.setdefaulttimeout(3)
+
+# make a TCP client.
 class client:
     def __init__(self,ip,port,command):
-        self.sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        self.sock.connect((ip,port))
+        self.sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM) # TCP client
+        self.sock.connect((ip,port))    # connect to the server
         self.sock.send(bytes(command,"utf-8"))
         data = ""
         try:
             while 1:
-                k = self.sock.recv(10000).decode()
+                k = self.sock.recv(10000).decode() # receive data
                 data += k
                 if not k:
                     break        
                 
-        except socket.timeout:
+        except socket.timeout: # If timeout
             pass
-        self.data = data
+        self.data = data  # return the results from the server
 
 #if the client faces an exception or closes, makes sure that the user is logged out
 def logout_exit():
