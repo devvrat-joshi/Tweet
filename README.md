@@ -101,13 +101,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A simplistic version of Twitter with a robust design and rich set of features.
+A simplistic version of Twitter with a robust design and rich set of features. Mini-Tweet supports a wide variety of features ranging from basic features like user management to advanced features like user security, notification handling and group chat.
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Dependencies
 The following python modules needs to be additionally installed in order to run the files.
