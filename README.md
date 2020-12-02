@@ -10,7 +10,7 @@
 
 </details>
 
-- [Directory Structure](#directory-structure)
+- [Directory Structure]
 
 * <details>
    <summary>Feature Checklist</summary>
