@@ -5,11 +5,12 @@
    <summary>Getting Started</summary>
    
     + [Dependencies](#dependencies)
-    + [Directory Structure]
     + [Running the Files](#running-the-files)
     + [Running the tests](#running-the-tests)
 
 </details>
+
+- [Directory Structure](#Directory-Structure)
 
 * <details>
    <summary>Feature Checklist</summary>
