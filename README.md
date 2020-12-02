@@ -118,57 +118,56 @@ The following modules needs to be additionally installed in order to run the fil
 
 ## Directory Structure 📂
 ```
-├── mininet
-│   ├── chat_client_mn.py
-│   ├── chat_client.py
-│   ├── followers_db.py
-│   ├── groups_db.py
-│   ├── makefile
-│   ├── minitweet.db
-│   ├── minitweet.py
-│   ├── server_mn.py
-│   ├── server.py
-│   ├── server_results.py
-│   ├── tests
-│   │   ├── input
-│   │   │   ├── client10.txt
-│   │   │   ├── client11.txt
-│   │   │   ├── client12.txt
-│   │   │   ├── client13.txt
-│   │   │   ├── client1.txt
-│   │   │   ├── client2.txt
-│   │   │   ├── client3.txt
-│   │   │   ├── client4.txt
-│   │   │   ├── client5.txt
-│   │   │   ├── client6.txt
-│   │   │   ├── client7.txt
-│   │   │   ├── client8.txt
-│   │   │   └── client9.txt
-│   │   ├── mininet_client_py
-│   │   │   ├── readme.md
-│   │   │   ├── type1.py
-│   │   │   ├── type2.py
-│   │   │   ├── type3.py
-│   │   │   ├── type4.py
-│   │   │   └── type5.py
-│   │   └── output
-│   ├── tree_tweet.py
-│   ├── tweets_db.py
-│   ├── updates_db.py
-│   ├── urls.py
-│   ├── users_db.py
-│   └── views.py
-├── README.md
-├── server.py
-├── chat_client.py
-└── src
-    ├── followers_db.py
-    ├── groups_db.py
-    ├── tweets_db.py
-    ├── updates_db.py
-    ├── urls.py
-    ├── users_db.py
-    └── views.py
+├── mininet                      - Mininet Scripts + Dependencies
+│   ├── chat_client_mn.py        - Mininet Client
+│   ├── chat_client.py           - Normal Client
+│   ├── followers_db.py          - Followers Table Functions
+│   ├── groups_db.py             - Group Chat Table Functions
+│   ├── makefile                 - Makefile to run tests
+│   ├── minitweet.db             - Database
+│   ├── minitweet.py             - Mininet Script Single Topology
+│   ├── tree_tweet.py            - Mininet Script Tree Topology
+│   ├── server_mn.py             - Mininet Server
+│   ├── server.py                - Normal Server
+│   ├── server_results.py        - Testing Results Display
+│   ├── tests                    - Tests
+│   │   ├── input                - Input files generated from scripts in mininet_client_py folder
+│   │   │   ├── client10.txt     - Chat Client
+│   │   │   ├── client11.txt     - Chat Client
+│   │   │   ├── client12.txt     - Chat Client
+│   │   │   ├── client13.txt     - Pre Requisite Fullfillment Client (Register required users before all clients run)
+│   │   │   ├── client1.txt      - No Login Queries Client
+│   │   │   ├── client2.txt      - No Login Queries Client
+│   │   │   ├── client3.txt      - No Login Queries Client
+│   │   │   ├── client4.txt      - Tweet Intensive Client
+│   │   │   ├── client5.txt      - Tweet Intensive Client
+│   │   │   ├── client6.txt      - Tweet + Updates + Feed Intensive Client
+│   │   │   ├── client7.txt      - Tweet + Updates + Feed Intensive Client
+│   │   │   ├── client8.txt      - Register+Retweet Intensive Client
+│   │   │   └── client9.txt      - Register+Retweet Intensive Client
+│   │   ├── mininet_client_py    - Input Generating python scripts
+│   │   │   ├── type1.py         - No Login Queries Client Generator
+│   │   │   ├── type2.py         - Tweet Intensive Client Generator
+│   │   │   ├── type3.py         - Tweet + Updates + Feed Intensive Client Generator
+│   │   │   ├── type4.py         - Register + Retweet Client Generator
+│   │   │   └── type5.py         - Chat Client Generator
+│   │   └── output               - Output Files
+│   ├── tweets_db.py             - Tweet Table Functions
+│   ├── updates_db.py            - Updates Table Functions
+│   ├── urls.py                  - Command mapping to functions
+│   ├── users_db.py              - Users Table Functions
+│   └── views.py                 - All Main Function that server runs for commands
+├── README.md                    - Main Readme
+├── server.py                    - Server
+├── chat_client.py               - Client
+└── src                          - Source for manual mode
+    ├── followers_db.py          - Followers Table Functions
+    ├── groups_db.py             - Group Chat Table Functions
+    ├── tweets_db.py             - Tweet Table Functions
+    ├── updates_db.py            - Updates Table Functions
+    ├── urls.py                  - Mapping of commands to functions
+    ├── users_db.py              - Users Table Functions
+    └── views.py                 - All Main Function that server runs for commands
 ```
 
 ### Running the Files
