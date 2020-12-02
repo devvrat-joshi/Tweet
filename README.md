@@ -5,6 +5,7 @@
    <summary>Getting Started</summary>
    
     + [Dependencies](#dependencies)
+    + [Directory Structure](## Directory Structure)
     + [Running the Files](#running-the-files)
     + [Running the tests](#running-the-tests)
 
