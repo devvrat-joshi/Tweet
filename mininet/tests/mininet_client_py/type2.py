@@ -6,7 +6,7 @@ import lorem
 from random import randint, shuffle
 numCommands = 1000
 
-print("register tron000 s s")
+print("register tron002 s s")
 for i in range(numCommands - 1):
     print("tweet")
     para = lorem.paragraph().split()

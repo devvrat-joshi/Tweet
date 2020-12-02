@@ -1,0 +1,8 @@
+register chatron1 s s
+logout
+register chatron2 s s
+follow chatron1
+logout
+login chatron1 s
+follow chatron2
+logout

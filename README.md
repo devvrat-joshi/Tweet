@@ -114,6 +114,61 @@ The following modules needs to be additionally installed in order to run the fil
   ```
 * [Mininet](http://mininet.org/download/)
 
+## Directory Structure 📂
+```
+├── mininet
+│   ├── chat_client_mn.py
+│   ├── chat_client.py
+│   ├── followers_db.py
+│   ├── groups_db.py
+│   ├── makefile
+│   ├── minitweet.db
+│   ├── minitweet.py
+│   ├── server_mn.py
+│   ├── server.py
+│   ├── server_results.py
+│   ├── tests
+│   │   ├── input
+│   │   │   ├── client10.txt
+│   │   │   ├── client11.txt
+│   │   │   ├── client12.txt
+│   │   │   ├── client13.txt
+│   │   │   ├── client1.txt
+│   │   │   ├── client2.txt
+│   │   │   ├── client3.txt
+│   │   │   ├── client4.txt
+│   │   │   ├── client5.txt
+│   │   │   ├── client6.txt
+│   │   │   ├── client7.txt
+│   │   │   ├── client8.txt
+│   │   │   └── client9.txt
+│   │   ├── mininet_client_py
+│   │   │   ├── readme.md
+│   │   │   ├── type1.py
+│   │   │   ├── type2.py
+│   │   │   ├── type3.py
+│   │   │   ├── type4.py
+│   │   │   └── type5.py
+│   │   └── output
+│   ├── tree_tweet.py
+│   ├── tweets_db.py
+│   ├── updates_db.py
+│   ├── urls.py
+│   ├── users_db.py
+│   └── views.py
+├── README.md
+├── server.py
+├── chat_client.py
+└── src
+    ├── followers_db.py
+    ├── groups_db.py
+    ├── tweets_db.py
+    ├── updates_db.py
+    ├── urls.py
+    ├── users_db.py
+    └── views.py
+```
+
 ### Running the Files
   
 1. Clone the repo

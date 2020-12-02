@@ -5,8 +5,7 @@
 4. hashtag
 """
 from random import *
-numCommands = 1000
-
+numCommands = 10000
 for i in range(numCommands):
     command = randint(1, 4)
     if command == 3:

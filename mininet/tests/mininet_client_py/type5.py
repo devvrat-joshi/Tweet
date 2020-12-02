@@ -1,7 +1,10 @@
+"""
+Chat users
+"""
 import lorem
-print("register chatron1 s s")
+print("register chatron2 s s")
 chats = 500
 for i in range(chats):
-    print("msg chatron2 "+lorem.sentence())
+    print("msg chatron1 "+lorem.sentence())
     if i%100==0:
-        print("follow chatron2")
+        print("follow chatron1")

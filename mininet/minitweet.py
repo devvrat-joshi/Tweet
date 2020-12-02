@@ -18,6 +18,7 @@ c0 = net.addController('s4')
 
 server_out = open("./tests/output/server.txt","w")
 h0 = net.addHost('h0')
+h20 = net.addHost('h20')
 net.addLink( h0, s1 )
 for i in range(numClients):
     time.sleep(0.2)
@@ -25,14 +26,15 @@ for i in range(numClients):
     hosts.append(net.addHost('h{}'.format(i + 1)))
     net.addLink( hosts[i], s1 )
 
+net.addLink( h20, s1 )
 net.start() # mininet emulator started
-
 print(h0.cmd("python3 server_mn.py {} &".format(h0.IP()))) # h0 host is server
+time.sleep(2)
+print(h20.cmd("python3 chat_client_mn.py {} {} {} &".format(h20.IP(),h0.IP(),13)))
 time.sleep(2)
 for i in range(numClients):
     hosts[i].cmd("python3 chat_client_mn.py {} {} {} &".format(hosts[i].IP(),h0.IP(),i + 1)) # client
 
-# CLI(net)
 try:
     numIter = 0
     while 1:

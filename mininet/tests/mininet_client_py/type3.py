@@ -7,9 +7,8 @@ import lorem
 from random import randint, shuffle
 numCommands = 1000
 
-print("register tron004 s s")
+print("register tron005 s s")
 print("follow tron001")
-print("follow tron002")
 print("follow tron000")
 
 for i in range(numCommands):
