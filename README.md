@@ -316,7 +316,7 @@ Sends the chat message_statement to the target_user from the current online
 
 
 ### Manage Group
-![](https://i.imgur.com/cxijThF.png)
+![](https://i.imgur.com/tpQHA3L.png)
 
 #### Create Group
 ```Syntax: group create <group_name>```
@@ -341,7 +341,7 @@ Deletes the entire group_name. The current user must be group owner to execute t
 ### Group Chat
 ```Syntax: stream <group_name> [msg_statement]```
 To send the msg_statement to the group members. The current user must be group member to send messages in group chat.
-![](https://i.imgur.com/eeqvXqk.png)
+![](https://i.imgur.com/DWPAMRN.png)
 
 
 
