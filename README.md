@@ -174,7 +174,7 @@ The following modules needs to be additionally installed in order to run the fil
   
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/devvrat-joshi/Tweet.git
    ```
 2. In the home directory of the project, run the server program.
    ```sh
